@@ -2,6 +2,7 @@ package io.homeassistant.companion.android.common.util
 
 import android.os.Build
 import android.os.StrictMode
+import android.os.strictmode.DiskReadViolation
 import android.os.strictmode.Violation
 import androidx.annotation.RequiresApi
 import java.util.concurrent.Executors
@@ -22,7 +23,8 @@ object HAStrictMode {
      *
      * The thread policy is configured to detect all potential issues and log them.
      *
-     * If a violation is detected by the VM policy or the thread policy, the application will [FailFast] by default.
+     * If a violation is detected by the VM policy or the thread policy, the application will [FailFast] by default,
+     * with the exception of [DiskReadViolation] which will only be logged.
      * However, you can provide a list of [IgnoreViolationRule] instances to ignore specific violations.
      *
      * @see android.os.StrictMode
@@ -37,6 +39,7 @@ object HAStrictMode {
                 .detectIncorrectContextUse()
                 .detectUnsafeIntentLaunch()
                 .detectLeakedRegistrationObjects()
+                .penaltyLog()
                 .penaltyListener(Executors.newSingleThreadExecutor()) { violation ->
                     if (!vmPolicyIgnoredViolationRules.any { it.shouldIgnore(violation) }) {
                         FailFast.failWith(violation)
@@ -50,7 +53,11 @@ object HAStrictMode {
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
                 .detectAll()
+                .penaltyLog()
                 .penaltyListener(Executors.newSingleThreadExecutor()) { violation ->
+                    if (violation is DiskReadViolation) {
+                        return@penaltyListener
+                    }
                     if (!threadPolicyIgnoredViolationRules.any { it.shouldIgnore(violation) }) {
                         FailFast.failWith(violation)
                     } else {

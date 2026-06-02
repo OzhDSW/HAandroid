@@ -61,7 +61,7 @@ data class OnboardingRoute(
     val hasLocationTracking: Boolean,
     val urlToOnboard: String? = null,
     val hideExistingServers: Boolean = false,
-    val skipWelcome: Boolean = false,
+    val skipWelcome: Boolean = true,
 ) : HAStartDestinationRoute
 
 /**
@@ -159,7 +159,7 @@ internal fun NavGraphBuilder.onboarding(
                 navController.navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, onShowSnackbar)
             },
         )
-        localFirstScreen(
+        /*localFirstScreen(
             onNextClick = { serverId, hasPlainTextAccess ->
                 val navOptions = navOptions {
                     popUpTo<LocalFirstRoute> { inclusive = true }
@@ -180,42 +180,42 @@ internal fun NavGraphBuilder.onboarding(
                 }
             },
             // We don't have back button since after name your device the device is registered
-        )
-        locationSharingScreen(
-            onHelpClick = {
-                navController.navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, onShowSnackbar)
-            },
-            onGotoNextScreen = { serverId, hasPlainTextAccess ->
-                navController.navigateToLocationForSecureConnectionConditionally(
-                    serverId = serverId,
-                    navOptions = navOptions {
-                        popUpTo<LocationSharingRoute> { inclusive = true }
-                    },
-                    hasPlainTextAccess = hasPlainTextAccess,
-                    onOnboardingDone = onOnboardingDone,
-                )
-            },
-            // We don't have back button since after name your device the device is registered
-        )
-        locationForSecureConnectionScreen(
-            onHelpClick = {
-                navController.navigateToUri(URL_SECURITY_LEVEL_DOCUMENTATION, onShowSnackbar)
-            },
-            onGotoNextScreen = { allowInsecureConnection, serverId ->
-                if (allowInsecureConnection) {
-                    onOnboardingDone()
-                } else {
-                    navController.navigateToSetHomeNetworkRoute(
-                        serverId = serverId,
-                        navOptions {
-                            popUpTo<LocationForSecureConnectionRoute> { inclusive = true }
-                        },
-                    )
-                }
-            },
-            onShowSnackbar = onShowSnackbar,
-            // We don't have back button since after name your device the device is registered
-        )
+        )*/
+//        locationSharingScreen(
+//            onHelpClick = {
+//                navController.navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, onShowSnackbar)
+//            },
+//            onGotoNextScreen = { serverId, hasPlainTextAccess ->
+//                navController.navigateToLocationForSecureConnectionConditionally(
+//                    serverId = serverId,
+//                    navOptions = navOptions {
+//                        popUpTo<LocationSharingRoute> { inclusive = true }
+//                    },
+//                    hasPlainTextAccess = hasPlainTextAccess,
+//                    onOnboardingDone = onOnboardingDone,
+//                )
+//            },
+//            // We don't have back button since after name your device the device is registered
+//        )
+//        locationForSecureConnectionScreen(
+//            onHelpClick = {
+//                navController.navigateToUri(URL_SECURITY_LEVEL_DOCUMENTATION, onShowSnackbar)
+//            },
+//            onGotoNextScreen = { allowInsecureConnection, serverId ->
+//                if (allowInsecureConnection) {
+//                    onOnboardingDone()
+//                } else {
+//                    navController.navigateToSetHomeNetworkRoute(
+//                        serverId = serverId,
+//                        navOptions {
+//                            popUpTo<LocationForSecureConnectionRoute> { inclusive = true }
+//                        },
+//                    )
+//                }
+//            },
+//            onShowSnackbar = onShowSnackbar,
+//            // We don't have back button since after name your device the device is registered
+//        )
 
         setHomeNetworkScreen(
             onHelpClick = {

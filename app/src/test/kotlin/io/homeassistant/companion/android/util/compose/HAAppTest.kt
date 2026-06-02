@@ -131,9 +131,9 @@ class HAAppTest {
     fun `Given default OnboardingRoute as start when starts then show Welcome`() {
         testApp(OnboardingRoute(hasLocationTracking = true)) {
             assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<WelcomeRoute>() == true)
-            onNodeWithText(stringResource(R.string.welcome_home_assistant_title)).assertIsDisplayed()
+            onNodeWithText(stringResource(R.string.welcome_alten_title)).assertIsDisplayed()
             onNodeWithText(stringResource(R.string.welcome_details)).assertIsDisplayed()
-            onNodeWithContentDescription(stringResource(R.string.home_assistant_branding_icon_content_description)).assertIsDisplayed()
+            onNodeWithContentDescription(stringResource(R.string.branding_icon_content_description)).assertIsDisplayed()
             onNodeWithText(stringResource(R.string.welcome_connect_to_ha)).performScrollTo().assertIsDisplayed()
             onNodeWithText(stringResource(R.string.welcome_learn_more)).performScrollTo().assertIsDisplayed()
         }

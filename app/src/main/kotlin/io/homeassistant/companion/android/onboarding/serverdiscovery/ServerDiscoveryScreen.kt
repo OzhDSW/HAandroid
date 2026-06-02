@@ -333,7 +333,7 @@ private fun ServerItemContent(server: ServerDiscovered, onConnectClick: (URL) ->
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            imageVector = ImageVector.vectorResource(R.drawable.ic_home_assistant_branding),
+            imageVector = ImageVector.vectorResource(R.drawable.ic_alten_branding),
             contentDescription = null,
             modifier = Modifier
                 .size(ICON_SIZE)

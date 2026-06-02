@@ -58,8 +58,8 @@ internal fun WelcomeScreen(
         Spacer(modifier = Modifier.weight(positionPercentage))
 
         Image(
-            imageVector = ImageVector.vectorResource(R.drawable.ic_home_assistant_branding),
-            contentDescription = stringResource(commonR.string.home_assistant_branding_icon_content_description),
+            imageVector = ImageVector.vectorResource(R.drawable.ic_alten_branding),
+            contentDescription = stringResource(commonR.string.branding_icon_content_description),
             modifier = Modifier.size(ICON_SIZE),
         )
         WelcomeText()
@@ -73,7 +73,7 @@ internal fun WelcomeScreen(
 @Composable
 private fun ColumnScope.WelcomeText() {
     Text(
-        text = stringResource(commonR.string.welcome_home_assistant_title),
+        text = stringResource(commonR.string.welcome_alten_title),
         style = HATextStyle.Headline,
         modifier = Modifier.widthIn(max = MaxTextWidth),
     )

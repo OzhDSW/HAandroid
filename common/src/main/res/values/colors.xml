@@ -6,14 +6,14 @@
     <color name="colorBackground">@android:color/white</color>
     <color name="colorOnBackground">#212121</color>
     <color name="colorSurface">@android:color/white</color>
-    <color name="colorPrimary">#03A9F4</color>
-    <color name="colorPrimaryDark">#0288D1</color>
-    <color name="colorAccent">#03A9F4</color>
+    <color name="colorPrimary">#8BC34A</color>
+    <color name="colorPrimaryDark">#4CAF50</color>
+    <color name="colorAccent">#8FEB9C</color>
     <color name="colorOnPrimary">@android:color/white</color>
     <color name="colorWarning">#D32F2F</color>
     <color name="colorHeadline1">@android:color/black</color>
     <color name="colorHeadline2">@android:color/black</color>
-    <color name="colorActionBar">#03A9F4</color>
+    <color name="colorActionBar">#2FF403</color>
     <color name="colorIcon">@android:color/black</color>
     <color name="colorSensorTopBackground">#f9fafc</color>
     <color name="colorSensorTopEnabled">#e0f5fe</color>
@@ -28,7 +28,7 @@
     <color name="colorCodeBackground">#f5f5f5</color>
     <color name="colorAlertInfo">#dbeef7</color>
     <color name="colorAlertWarning">#1fffa600</color>
-    <color name="colorOnAlertInfo">#039be5</color>
+    <color name="colorOnAlertInfo">#4CAF50</color>
     <color name="colorOnAlertWarning">#ffa600</color>
     <color name="colorOnAlertSuccess">#43a047</color>
     <color name="colorDeviceControlsLightOn">#FDD663</color>
@@ -41,5 +41,5 @@
     <color name="colorPreferenceSuggestion">#1F03A9F4</color> <!-- colorAccent 12% opacity -->
     <color name="colorOnSurfaceVariant">#49454E</color> <!-- M3 On Surface Variant -->
     <color name="colorBottomSheetHandle">#6649454E</color> <!-- M3 On Surface Variant 40% opacity -->
-    <color name="colorLauncherBackground">#18BCF2</color>
+    <color name="colorLauncherBackground">#D6FBD8</color>
 </resources>

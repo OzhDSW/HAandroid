@@ -405,7 +405,7 @@ private fun FrontendErrorScreenPreview() {
         FrontendConnectionErrorScreen(
             onOpenExternalLink = {},
             title = "Connection failed",
-            subtitle = "Unable to reach your Home Assistant server",
+            subtitle = "Unable to reach your Alten server",
             errorType = "UnreachableError",
             connectivityCheckState = ConnectivityCheckState(),
             onRetryConnectivityCheck = {},
