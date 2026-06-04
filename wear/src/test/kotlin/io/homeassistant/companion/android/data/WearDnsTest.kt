@@ -1,14 +1,14 @@
 @file:OptIn(ExperimentalTime::class)
 
-package io.homeassistant.companion.android.data
+package io.altenems.companion.android.data
 
 import android.content.Context
-import io.homeassistant.companion.android.common.util.WearDataMessages.DnsLookup.CAPABILITY_DNS_VIA_MOBILE
-import io.homeassistant.companion.android.common.util.WearDataMessages.DnsLookup.encodeDNSResult
-import io.homeassistant.companion.android.fakes.FakeCapabilityClient
-import io.homeassistant.companion.android.fakes.FakeClock
-import io.homeassistant.companion.android.fakes.FakeDns
-import io.homeassistant.companion.android.fakes.FakeMessageClient
+import io.altenems.companion.android.common.util.WearDataMessages.DnsLookup.CAPABILITY_DNS_VIA_MOBILE
+import io.altenems.companion.android.common.util.WearDataMessages.DnsLookup.encodeDNSResult
+import io.altenems.companion.android.fakes.FakeCapabilityClient
+import io.altenems.companion.android.fakes.FakeClock
+import io.altenems.companion.android.fakes.FakeDns
+import io.altenems.companion.android.fakes.FakeMessageClient
 import io.mockk.every
 import io.mockk.mockk
 import java.net.InetAddress
@@ -31,68 +31,68 @@ class WearDnsTest {
     val dns = FakeDns()
     private val wearDns = WearDns(messageClient, capabilityClient, clock, dns)
 
-    val homeAssistantLocal: InetAddress = InetAddress.getByAddress("homeassistant.local", byteArrayOf(192.toByte(), 168.toByte(), 0, 23))
-    val homeAssistantLocal2: InetAddress = InetAddress.getByAddress("homeassistant.local", byteArrayOf(192.toByte(), 168.toByte(), 0, 24))
+    val altenemsLocal: InetAddress = InetAddress.getByAddress("altenems.local", byteArrayOf(192.toByte(), 168.toByte(), 0, 23))
+    val altenemsLocal2: InetAddress = InetAddress.getByAddress("altenems.local", byteArrayOf(192.toByte(), 168.toByte(), 0, 24))
 
     @Test
     fun `Given a hostname when making DNS lookup then returns DNS entry`() {
         // given
-        dns.results["homeassistant.local"] = Result.success(listOf(homeAssistantLocal))
+        dns.results["altenems.local"] = Result.success(listOf(altenemsLocal))
 
         // when
-        val results = wearDns.lookup("homeassistant.local")
+        val results = wearDns.lookup("altenems.local")
 
         // then
-        assertEquals(homeAssistantLocal, results.single())
+        assertEquals(altenemsLocal, results.single())
     }
 
     @Test
     fun `Given a hostname when making DNS lookup then falls back to mobile dns when present`() {
         // given
-        dns.results["homeassistant.local"] = Result.failure(UnknownHostException())
+        dns.results["altenems.local"] = Result.failure(UnknownHostException())
 
         capabilityClient.capabilities[CAPABILITY_DNS_VIA_MOBILE] = setOf("1234")
-        messageClient.onRequest = { listOf(homeAssistantLocal).encodeDNSResult() }
+        messageClient.onRequest = { listOf(altenemsLocal).encodeDNSResult() }
 
         // when
-        val results = wearDns.lookup("homeassistant.local")
+        val results = wearDns.lookup("altenems.local")
 
         // then
-        assertEquals(homeAssistantLocal, results.single())
+        assertEquals(altenemsLocal, results.single())
     }
 
     @Test
     fun `Given a hostname when making DNS lookup then fails when mobile not present`() {
         // given
-        dns.results["homeassistant.local"] = Result.failure(UnknownHostException())
+        dns.results["altenems.local"] = Result.failure(UnknownHostException())
 
         capabilityClient.capabilities[CAPABILITY_DNS_VIA_MOBILE] = setOf()
 
         try {
             // when
-            wearDns.lookup("homeassistant.local")
+            wearDns.lookup("altenems.local")
             fail { "Lookup should throw" }
         } catch (exception: UnknownHostException) {
             // then
-            assertEquals("No Mobile DNS helper registered. Unable to resolve homeassistant.local", exception.message)
+            assertEquals("No Mobile DNS helper registered. Unable to resolve altenems.local", exception.message)
         }
     }
 
     @Test
     fun `Given a hostname when making DNS lookup then fails when mobile fails`() {
         // given
-        dns.results["homeassistant.local"] = Result.failure(UnknownHostException())
+        dns.results["altenems.local"] = Result.failure(UnknownHostException())
 
         capabilityClient.capabilities[CAPABILITY_DNS_VIA_MOBILE] = setOf("1234")
         messageClient.onRequest = { byteArrayOf() }
 
         try {
             // when
-            wearDns.lookup("homeassistant.local")
+            wearDns.lookup("altenems.local")
             fail { "Lookup should throw" }
         } catch (exception: UnknownHostException) {
             // then
-            assertEquals("Mobile helper unable to resolve homeassistant.local", exception.message)
+            assertEquals("Mobile helper unable to resolve altenems.local", exception.message)
         }
     }
 
@@ -100,65 +100,65 @@ class WearDnsTest {
     fun `Given a cached hostname when making DNS lookup then returns cached results`() {
         // given
         clock.time = Instant.fromEpochSeconds(1757959158)
-        dns.results["homeassistant.local"] = Result.failure(UnknownHostException())
+        dns.results["altenems.local"] = Result.failure(UnknownHostException())
         capabilityClient.capabilities[CAPABILITY_DNS_VIA_MOBILE] = setOf("1234")
-        messageClient.onRequest = { listOf(homeAssistantLocal).encodeDNSResult() }
+        messageClient.onRequest = { listOf(altenemsLocal).encodeDNSResult() }
 
-        wearDns.lookup("homeassistant.local")
+        wearDns.lookup("altenems.local")
 
         messageClient.onRequest = { listOf<InetAddress>().encodeDNSResult() }
 
         // when
-        val results = wearDns.lookup("homeassistant.local")
+        val results = wearDns.lookup("altenems.local")
 
         // then
-        assertEquals(homeAssistantLocal, results.single())
+        assertEquals(altenemsLocal, results.single())
     }
 
     @Test
     fun `Given a stale cached hostname when making DNS lookup then fetches fresh results`() {
         // given
         clock.time = Instant.fromEpochSeconds(1757959158)
-        dns.results["homeassistant.local"] = Result.failure(UnknownHostException())
+        dns.results["altenems.local"] = Result.failure(UnknownHostException())
         capabilityClient.capabilities[CAPABILITY_DNS_VIA_MOBILE] = setOf("1234")
-        messageClient.onRequest = { listOf(homeAssistantLocal).encodeDNSResult() }
+        messageClient.onRequest = { listOf(altenemsLocal).encodeDNSResult() }
 
-        wearDns.lookup("homeassistant.local")
+        wearDns.lookup("altenems.local")
 
-        messageClient.onRequest = { listOf(homeAssistantLocal2).encodeDNSResult() }
+        messageClient.onRequest = { listOf(altenemsLocal2).encodeDNSResult() }
         clock.time = clock.time + wearDns.cacheLifetime + 1.seconds
 
         // when
-        val results = wearDns.lookup("homeassistant.local")
+        val results = wearDns.lookup("altenems.local")
 
         // then
-        assertEquals(homeAssistantLocal2, results.single())
+        assertEquals(altenemsLocal2, results.single())
     }
 
     @Test
     fun `Given an UnknownHostException when making DNS lookup then returns cached failure`() {
         // given
         clock.time = Instant.fromEpochSeconds(1757959158)
-        dns.results["homeassistant.local"] = Result.failure(UnknownHostException())
+        dns.results["altenems.local"] = Result.failure(UnknownHostException())
         capabilityClient.capabilities[CAPABILITY_DNS_VIA_MOBILE] = setOf("1234")
         messageClient.onRequest = { listOf<InetAddress>().encodeDNSResult() }
 
         try {
-            wearDns.lookup("homeassistant.local")
+            wearDns.lookup("altenems.local")
             fail()
         } catch (e: UnknownHostException) {
             // expected
         }
 
-        messageClient.onRequest = { listOf(homeAssistantLocal).encodeDNSResult() }
+        messageClient.onRequest = { listOf(altenemsLocal).encodeDNSResult() }
 
         try {
             // when
-            wearDns.lookup("homeassistant.local")
+            wearDns.lookup("altenems.local")
             fail { "Lookup should throw" }
         } catch (exception: UnknownHostException) {
             // then
-            assertEquals("Mobile helper unable to resolve homeassistant.local", exception.message)
+            assertEquals("Mobile helper unable to resolve altenems.local", exception.message)
         }
     }
 }

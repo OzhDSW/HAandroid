@@ -12,7 +12,7 @@
     </queries>
 
     <application
-        android:name="io.homeassistant.companion.android.HomeAssistantApplication" >
+        android:name="io.altenems.companion.android.AltenEmsApplication" >
         <meta-data android:name="io.sentry.auto-init" android:value="false" />
         <meta-data android:name="io.sentry.release" android:value="${sentryRelease}" />
         <meta-data android:name="io.sentry.dsn" android:value="${sentryDsn}" />
@@ -21,7 +21,7 @@
             android:name=".matter.MatterCommissioningActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:theme="@style/Theme.HomeAssistant.Config">
+            android:theme="@style/Theme.altenems.Config">
             <intent-filter>
                 <action android:name="com.google.android.gms.home.matter.ACTION_COMMISSION_DEVICE"/>
                 <category android:name="android.intent.category.DEFAULT"/>

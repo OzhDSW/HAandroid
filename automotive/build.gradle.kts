@@ -1,8 +1,8 @@
 plugins {
-    alias(libs.plugins.homeassistant.android.application)
-    alias(libs.plugins.homeassistant.android.flavor)
+    alias(libs.plugins.altenems.android.application)
+    alias(libs.plugins.altenems.android.flavor)
     alias(libs.plugins.google.services)
-    alias(libs.plugins.homeassistant.android.dependencies)
+    alias(libs.plugins.altenems.android.dependencies)
     alias(libs.plugins.kotlin.parcelize)
 }
 

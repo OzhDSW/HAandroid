@@ -1,11 +1,11 @@
 import com.android.build.api.dsl.ApplicationExtension
-import io.homeassistant.companion.android.getPluginId
+import io.altenems.companion.android.getPluginId
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
-private const val APPLICATION_ID = "io.homeassistant.companion.android"
+private const val APPLICATION_ID = "io.altenems.companion.android"
 
 /**
  * A convention plugin that applies common configurations to Android application modules.

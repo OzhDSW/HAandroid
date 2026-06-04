@@ -1,0 +1,297 @@
+package io.altenems.companion.android.onboarding.serverdiscovery.navigation
+
+import android.os.Build
+import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.junit4.AndroidComposeTestRule
+import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipeUp
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.toRoute
+import dagger.hilt.android.testing.BindValue
+import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.HiltTestApplication
+import dagger.hilt.android.testing.UninstallModules
+import io.altenems.companion.android.common.R as commonR
+import io.altenems.companion.android.common.data.altenemsVersion
+import io.altenems.companion.android.common.data.connectivity.ConnectivityCheckState
+import io.altenems.companion.android.onboarding.BaseOnboardingNavigationTest
+import io.altenems.companion.android.onboarding.URL_GETTING_STARTED_DOCUMENTATION
+import io.altenems.companion.android.onboarding.connection.CONNECTION_SCREEN_TAG
+import io.altenems.companion.android.onboarding.connection.ConnectionNavigationEvent
+import io.altenems.companion.android.onboarding.connection.ConnectionViewModel
+import io.altenems.companion.android.onboarding.connection.navigation.ConnectionRoute
+import io.altenems.companion.android.onboarding.manualserver.navigation.ManualServerRoute
+import io.altenems.companion.android.onboarding.nameyourdevice.navigation.NameYourDeviceRoute
+import io.altenems.companion.android.onboarding.serverdiscovery.DELAY_BEFORE_DISPLAY_DISCOVERY
+import io.altenems.companion.android.onboarding.serverdiscovery.altenemsInstance
+import io.altenems.companion.android.onboarding.serverdiscovery.altenemsSearcher
+import io.altenems.companion.android.onboarding.serverdiscovery.ONE_SERVER_FOUND_MODAL_TAG
+import io.altenems.companion.android.onboarding.serverdiscovery.ServerDiscoveryModule
+import io.altenems.companion.android.onboarding.welcome.navigation.WelcomeRoute
+import io.altenems.companion.android.testing.unit.MainDispatcherJUnit4Rule
+import io.altenems.companion.android.testing.unit.TestSharedFlow
+import io.altenems.companion.android.testing.unit.stringResource
+import io.altenems.companion.android.util.FakePermissionResultRegistry
+import io.altenems.companion.android.util.compose.navigateToUri
+import io.mockk.coVerify
+import io.mockk.every
+import io.mockk.mockk
+import java.net.URL
+import junit.framework.TestCase.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.test.runTest
+import org.junit.Ignore
+import org.junit.Rule
+import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
+
+/**
+ * Navigation tests for the Server Discovery screen in the onboarding flow.
+ */
+@RunWith(RobolectricTestRunner::class)
+@Config(application = HiltTestApplication::class)
+@UninstallModules(ServerDiscoveryModule::class)
+@HiltAndroidTest
+internal class ServerDiscoveryNavigationTest : BaseOnboardingNavigationTest() {
+
+    @get:Rule(order = 2)
+    val mainDispatcherRule = MainDispatcherJUnit4Rule()
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun testNavigation(
+        urlToOnboard: String?,
+        hideExistingServers: Boolean,
+        skipWelcome: Boolean,
+        hasLocationTracking: Boolean,
+        testContent: suspend AndroidComposeTestRule<*, *>.() -> Unit,
+    ) {
+        setContent(
+            urlToOnboard = urlToOnboard,
+            hideExistingServers = hideExistingServers,
+            skipWelcome = skipWelcome,
+            hasLocationTracking = hasLocationTracking,
+        )
+        runTest(mainDispatcherRule.testDispatcher) {
+            composeTestRule.testContent()
+        }
+    }
+
+    @BindValue
+    @JvmField
+    val searcher: altenemsSearcher = object : altenemsSearcher {
+        override fun discoveredInstanceFlow(): Flow<altenemsInstance> {
+            return instanceChannel.consumeAsFlow()
+        }
+    }
+
+    val instanceChannel = Channel<altenemsInstance>()
+
+    val connectionNavigationEventFlow = TestSharedFlow<ConnectionNavigationEvent>()
+
+    @BindValue
+    @JvmField
+    val connectionViewModel: ConnectionViewModel = mockk(relaxed = true) {
+        every { urlFlow } returns MutableStateFlow("http://altenems.local:8123")
+        every { isLoadingFlow } returns MutableStateFlow(false)
+        every { navigationEventsFlow } returns connectionNavigationEventFlow
+        every { errorFlow } returns MutableStateFlow(null)
+        every { connectivityCheckState } returns MutableStateFlow(ConnectivityCheckState())
+        every { pendingFileChooser } returns MutableStateFlow(null)
+    }
+
+    @Test
+    fun `Given skipWelcome without urlToOnboard when starting then show ServerDiscovery`() {
+        testNavigation(skipWelcome = true) {
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+        }
+    }
+
+    /**
+     * On Android 17+, entering the discovery screen requests
+     * `ACCESS_LOCAL_NETWORK`. A denial routes the user directly to ManualServer because
+     * LAN-based discovery cannot succeed without the permission. Pressing back from
+     * ManualServer must not bounce the user back to ServerDiscovery (which would re-detect the
+     * denial and re-redirect) — the discovery destination is popped from the back stack.
+     */
+    @Test
+    @Ignore("Robolectric 4.16.1 does not support API 37; re-enable once robolectric-target-sdk reaches 37")
+    @Config(sdk = [Build.VERSION_CODES.CINNAMON_BUN])
+    fun `Given API 37 with denied local network permission when entering ServerDiscovery then routes to ManualServer and back skips ServerDiscovery`() {
+        setContent(
+            skipWelcome = true,
+            permissionResultRegistry = FakePermissionResultRegistry(grantedPermissions = emptySet()),
+        )
+        runTest(mainDispatcherRule.testDispatcher) {
+            composeTestRule.apply {
+                waitForIdle()
+                assertTrue(
+                    navController.currentBackStackEntry?.destination?.hasRoute<ManualServerRoute>() == true,
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `Given clicking on connect button when starting the onboarding then show ServerDiscovery then back goes to Welcome`() {
+        testNavigation {
+            onNodeWithText(stringResource(commonR.string.welcome_connect_to_ha))
+                .assertIsDisplayed()
+                .performClick()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+
+            onNodeWithContentDescription(stringResource(commonR.string.get_help)).performClick()
+            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+
+            onNodeWithContentDescription(stringResource(commonR.string.navigate_up))
+                .assertIsDisplayed()
+                .performClick()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<WelcomeRoute>() == true)
+        }
+    }
+
+    @Test
+    fun `Given clicking on connect button with hide existing server and no server to onboard when starting the onboarding then show Discovery screen with existing server hidden then back goes to Welcome`() {
+        testNavigation(hideExistingServers = true) {
+            onNodeWithText(stringResource(commonR.string.welcome_connect_to_ha))
+                .assertIsDisplayed()
+                .performClick()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+            assertTrue(
+                navController.currentBackStackEntry?.toRoute<ServerDiscoveryRoute>()?.discoveryMode ==
+                    ServerDiscoveryMode.HIDE_EXISTING,
+            )
+
+            onNodeWithContentDescription(stringResource(commonR.string.navigate_up))
+                .assertIsDisplayed()
+                .performClick()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<WelcomeRoute>() == true)
+        }
+    }
+
+    @Test
+    fun `Given clicking enter manual address button when discovering server then show ManualServer then back goes to ServerDiscovery`() {
+        testNavigation {
+            navController.navigateToServerDiscovery()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+            onNodeWithText(stringResource(commonR.string.manual_setup))
+                .performScrollTo()
+                .assertIsDisplayed()
+                .performClick()
+
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ManualServerRoute>() == true)
+
+            onNodeWithContentDescription(stringResource(commonR.string.get_help)).performClick()
+            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+
+            onNodeWithContentDescription(stringResource(commonR.string.navigate_up))
+                .assertIsDisplayed()
+                .performClick()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+        }
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun `Given a server discovered when clicking on it then show ConnectScreen then back goes to ServerDiscovery`() {
+        val instanceUrl = "http://ha.local"
+        testNavigation {
+            navController.navigateToServerDiscovery()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+            onNodeWithText(stringResource(commonR.string.manual_setup))
+                .performScrollTo()
+                .assertIsDisplayed()
+
+            instanceChannel.send(
+                altenemsInstance("Test", URL(instanceUrl), altenemsVersion(2025, 9, 1)),
+            )
+
+            onNodeWithContentDescription(stringResource(commonR.string.get_help)).performClick()
+            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+
+            mainDispatcherRule.testDispatcher.scheduler.advanceTimeBy(DELAY_BEFORE_DISPLAY_DISCOVERY.inWholeMilliseconds)
+            mainDispatcherRule.testDispatcher.scheduler.runCurrent()
+            mainClock.advanceTimeBy(DELAY_BEFORE_DISPLAY_DISCOVERY.inWholeMilliseconds, ignoreFrameDuration = true)
+            waitForIdle()
+
+            onNodeWithTag(ONE_SERVER_FOUND_MODAL_TAG).assertIsDisplayed().performTouchInput {
+                swipeUp(startY = bottom * 0.9f, endY = centerY, durationMillis = 200)
+            }
+
+            waitForIdle()
+
+            onNodeWithText(instanceUrl).assertIsDisplayed()
+
+            onNodeWithText(stringResource(commonR.string.server_discovery_connect))
+                .assertIsDisplayed()
+                .performClick()
+
+            waitForIdle()
+
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ConnectionRoute>() == true)
+
+            onNodeWithTag(CONNECTION_SCREEN_TAG).assertIsDisplayed()
+
+            composeTestRule.activity.onBackPressedDispatcher.onBackPressed()
+
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+        }
+    }
+
+    @OptIn(ExperimentalTestApi::class, ExperimentalCoroutinesApi::class)
+    @Test
+    fun `Given a server discovered and connecting when authenticated then show NameYourDevice then back goes to ServerDiscovery not ConnectionScreen`() {
+        val instanceUrl = "http://ha.local"
+        testNavigation {
+            navController.navigateToServerDiscovery()
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+            onNodeWithText(stringResource(commonR.string.manual_setup))
+                .performScrollTo()
+                .assertIsDisplayed()
+
+            instanceChannel.send(
+                altenemsInstance("Test", URL(instanceUrl), altenemsVersion(2025, 9, 1)),
+            )
+
+            mainDispatcherRule.testDispatcher.scheduler.advanceTimeBy(DELAY_BEFORE_DISPLAY_DISCOVERY.inWholeMilliseconds)
+            mainDispatcherRule.testDispatcher.scheduler.runCurrent()
+            mainClock.advanceTimeBy(DELAY_BEFORE_DISPLAY_DISCOVERY.inWholeMilliseconds, ignoreFrameDuration = true)
+            waitForIdle()
+
+            onNodeWithText(instanceUrl).assertIsDisplayed()
+
+            onNodeWithText(stringResource(commonR.string.server_discovery_connect)).performClick()
+
+            onNodeWithTag(CONNECTION_SCREEN_TAG).assertIsDisplayed()
+
+            assertTrue(connectionNavigationEventFlow.subscriptionCount.value == 1)
+            connectionNavigationEventFlow.emit(
+                ConnectionNavigationEvent.Authenticated(instanceUrl, "super_code", false),
+            )
+
+            waitUntilAtLeastOneExists(hasText(stringResource(commonR.string.name_your_device_title)))
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<NameYourDeviceRoute>() == true)
+            val route = navController.currentBackStackEntry?.toRoute<NameYourDeviceRoute>()
+            assertEquals(instanceUrl, route?.url)
+            assertEquals("super_code", route?.authCode)
+
+            onNodeWithContentDescription(stringResource(commonR.string.navigate_up)).performClick()
+
+            assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
+        }
+    }
+}

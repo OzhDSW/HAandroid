@@ -1,10 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.homeassistant.android.common)
+    alias(libs.plugins.altenems.android.common)
 }
 
 android {
-    namespace = "io.homeassistant.companion.android.microwakeword"
+    namespace = "io.altenems.companion.android.microwakeword"
     ndkVersion = libs.versions.androidNdk.get()
 
     defaultConfig {

@@ -38,6 +38,7 @@ coreKtx = "1.18.0"
 core-splashscreen = "1.2.0"
 core-remoteviews = "1.1.0"
 cronet = "143.7445.0"
+datastore = "1.1.1"
 emojiJava = "5.1.1"
 firebase-bom = "34.13.0"
 firebaseAppdistributionGradle = "5.2.1"
@@ -84,6 +85,7 @@ screenshot = "0.0.1-alpha15" # On the next update, replace the hack in AndroidCo
 sentry-android = "8.42.0"
 timber = "5.0.1"
 tools-desugar-jdk-libs = "2.1.5"
+tunnel = "1.0.20230706"
 turbine = "1.2.1"
 watchfaceComplicationsDataSourceKtx = "1.3.0"
 wear = "1.4.0"
@@ -114,11 +116,11 @@ ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 screenshot = { id = "com.android.compose.screenshot", version.ref = "screenshot" }
 
 # Plugins defined by this project in `:build-logic:convention` module.
-homeassistant-android-application = { id = "homeassistant.android.application" }
-homeassistant-android-common = { id = "homeassistant.android.common" }
-homeassistant-android-compose = { id = "homeassistant.android.compose" }
-homeassistant-android-dependencies = { id = "homeassistant.android.dependencies" }
-homeassistant-android-flavor = { id = "homeassistant.android.flavor" }
+altenems-android-application = { id = "altenems.android.application" }
+altenems-android-common = { id = "altenems.android.common" }
+altenems-android-compose = { id = "altenems.android.compose" }
+altenems-android-dependencies = { id = "altenems.android.dependencies" }
+altenems-android-flavor = { id = "altenems.android.flavor" }
 
 [libraries]
 aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
@@ -130,6 +132,8 @@ android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", ve
 androidx-lifecycle-service = { module = "androidx.lifecycle:lifecycle-service", version.ref = "lifecycle" }
 compose-screenshot-gradle-plugin = { group = "com.android.compose.screenshot", name = "screenshot-test-gradle-plugin", version.ref = "screenshot" }
 androidx-concurrent-ktx = { group = "androidx.concurrent", name = "concurrent-futures-ktx", version.ref = "androidxConcurrent" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 androidx-glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
 androidx-glance-material = { module = "androidx.glance:glance-material", version.ref = "glance" }
 androidx-glance-preview = { module = "androidx.glance:glance-preview", version.ref = "glance" }
@@ -252,6 +256,8 @@ screenshot-validation-api = { group = "com.android.tools.screenshot", name = "sc
 sentry-android-core = { module = "io.sentry:sentry-android-core", version.ref = "sentry-android" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 tools-desugar-jdk = { module = "com.android.tools:desugar_jdk_libs", version.ref = "tools-desugar-jdk-libs" }
+#noinspection Aligned16KB
+tunnel = { module = "com.wireguard.android:tunnel", version.ref = "tunnel" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 wear = { module = "androidx.wear:wear", version.ref = "wear" }
 wear-compose-foundation = { module = "androidx.wear.compose:compose-foundation", version.ref = "wear-compose" }

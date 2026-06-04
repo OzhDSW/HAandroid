@@ -6,7 +6,7 @@
     android:minHeight="40dp"
     android:minWidth="40dp"
     android:background="@drawable/widget_transparent_background"
-    android:theme="@style/Theme.HomeAssistant.Widget">
+    android:theme="@style/Theme.altenems.Widget">
 
     <ImageView
         android:id="@+id/widgetCameraImage"

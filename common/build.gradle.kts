@@ -1,22 +1,22 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.homeassistant.android.common)
-    alias(libs.plugins.homeassistant.android.compose)
+    alias(libs.plugins.altenems.android.common)
+    alias(libs.plugins.altenems.android.compose)
 }
 
-val homeAssistantAndroidPushUrl: String by project
-val homeAssistantAndroidRateLimitUrl: String by project
+val altenemsAndroidPushUrl: String by project
+val altenemsAndroidRateLimitUrl: String by project
 
 val versionName = project.version.toString()
 val versionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: 1
 
 android {
-    namespace = "io.homeassistant.companion.android.common"
+    namespace = "io.altenems.companion.android.common"
 
     defaultConfig {
-        buildConfigField("String", "PUSH_URL", "\"$homeAssistantAndroidPushUrl\"")
-        buildConfigField("String", "RATE_LIMIT_URL", "\"$homeAssistantAndroidRateLimitUrl\"")
+        buildConfigField("String", "PUSH_URL", "\"$altenemsAndroidPushUrl\"")
+        buildConfigField("String", "RATE_LIMIT_URL", "\"$altenemsAndroidRateLimitUrl\"")
         buildConfigField("String", "VERSION_NAME", "\"$versionName-$versionCode\"")
     }
 
@@ -46,6 +46,8 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     api(libs.androidx.work.runtime.ktx)
+    api(libs.androidx.datastore.preferences)
+    api(libs.androidx.datastore)
 
     // TODO should not expose retrofit outside of common https://github.com/home-assistant/android/issues/5421
     api(platform(libs.retrofit.bom))

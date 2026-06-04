@@ -1,10 +1,10 @@
-package io.homeassistant.companion.android
+package io.altenems.companion.android
 
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
-import io.homeassistant.companion.android.common.data.integration.PushWebsocketSupport
-import io.homeassistant.companion.android.common.util.AppVersionProvider
+import io.altenems.companion.android.common.data.integration.PushWebsocketSupport
+import io.altenems.companion.android.common.util.AppVersionProvider
 import javax.inject.Inject
 import org.junit.Before
 import org.junit.Rule

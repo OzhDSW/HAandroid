@@ -9,7 +9,7 @@
         android:shortcutShortLabel="@string/dev_playground_label">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="io.homeassistant.companion.android.developer.DevPlaygroundActivity"
-            android:targetPackage="io.homeassistant.companion.android.debug" />
+            android:targetClass="io.altenems.companion.android.developer.DevPlaygroundActivity"
+            android:targetPackage="io.altenems.companion.android.debug" />
     </shortcut>
 </shortcuts>

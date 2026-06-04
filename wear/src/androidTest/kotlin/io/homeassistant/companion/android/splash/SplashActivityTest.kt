@@ -1,4 +1,4 @@
-package io.homeassistant.companion.android.splash
+package io.altenems.companion.android.splash
 
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import org.junit.Rule

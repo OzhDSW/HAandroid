@@ -1,9 +1,9 @@
 plugins {
-    alias(libs.plugins.homeassistant.android.application)
-    alias(libs.plugins.homeassistant.android.flavor)
+    alias(libs.plugins.altenems.android.application)
+    alias(libs.plugins.altenems.android.flavor)
     alias(libs.plugins.firebase.appdistribution)
     alias(libs.plugins.google.services)
-    alias(libs.plugins.homeassistant.android.dependencies)
+    alias(libs.plugins.altenems.android.dependencies)
     alias(libs.plugins.kotlin.parcelize)
 }
 
@@ -14,7 +14,7 @@ android {
         manifestPlaceholders["sentryRelease"] = "$applicationId@$versionName"
         manifestPlaceholders["sentryDsn"] = System.getenv("SENTRY_DSN") ?: ""
 
-        testInstrumentationRunner = "io.homeassistant.companion.android.util.HAAndroidJUnitRunner"
+        testInstrumentationRunner = "io.altenems.companion.android.util.HAAndroidJUnitRunner"
 
         bundle {
             language {
@@ -51,6 +51,7 @@ firebaseAppDistributionDefault {
 dependencies {
     // Most of the dependencies are coming from the convention plugin to avoid duplication with `:automotive` module.
     "fullImplementation"(libs.car.projected)
+    implementation(libs.tunnel)
 }
 
 // Disable to fix memory leak and be compatible with the configuration cache.

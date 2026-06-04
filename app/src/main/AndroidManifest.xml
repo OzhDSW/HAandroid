@@ -88,7 +88,7 @@
     <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
 
     <application
-        android:name="io.homeassistant.companion.android.HomeAssistantApplication"
+        android:name=".AltenEmsApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
         android:dataExtractionRules="@xml/backup_rules_android12"
@@ -97,7 +97,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HomeAssistant"
+        android:theme="@style/Theme.altenems"
         android:networkSecurityConfig="@xml/network_security_config"
         android:enableOnBackInvokedCallback="true"
         android:localeConfig="@xml/locales_config"
@@ -105,13 +105,23 @@
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:targetApi="tiramisu">
 
+
+        <service
+            android:name="com.wireguard.android.backend.GoBackend$VpnService"
+            android:exported="true"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            tools:replace="android:exported">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
         <!--
         WARNING: Do not change the fully qualified name of this activity.
         Android shortcuts are tied to its component name; renaming it will permanently
         break all user-created shortcuts from previous versions.
         -->
         <activity
-            android:name="io.homeassistant.companion.android.launch.LaunchActivity"
+            android:name="io.altenems.companion.android.launch.LaunchActivity"
             android:exported="true"
             android:supportsPictureInPicture="true"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|navigation|uiMode"
@@ -134,10 +144,10 @@
         break the app for users who set it as their default launcher when updating.
         -->
         <activity-alias
-            android:name="io.homeassistant.companion.android.launch.LauncherAlias"
+            android:name="io.altenems.companion.android.launch.LauncherAlias"
             android:enabled="false"
             android:exported="true"
-            android:targetActivity="io.homeassistant.companion.android.launch.LaunchActivity">
+            android:targetActivity="io.altenems.companion.android.launch.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -154,9 +164,9 @@
         the lock screen.
         -->
         <activity-alias
-            android:name="io.homeassistant.companion.android.launch.LaunchOverLockScreen"
+            android:name="io.altenems.companion.android.launch.LaunchOverLockScreen"
             android:exported="false"
-            android:targetActivity="io.homeassistant.companion.android.launch.LaunchActivity" />
+            android:targetActivity="io.altenems.companion.android.launch.LaunchActivity" />
 
         <!-- Start things like SensorWorker on device boot -->
         <receiver android:name=".websocket.WebsocketBroadcastReceiver"
@@ -185,7 +195,7 @@
                 <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
                 <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
                 <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
-                <action android:name="io.homeassistant.companion.android.UPDATE_SENSORS" />
+                <action android:name="io.altenems.companion.android.UPDATE_SENSORS" />
             </intent-filter>
         </receiver>
 
@@ -193,8 +203,8 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="io.homeassistant.companion.android.widgets.ButtonWidget.CALL_SERVICE" />
-                <action android:name="io.homeassistant.companion.android.widgets.ButtonWidget.CALL_SERVICE_AUTH" />
+                <action android:name="io.altenems.companion.android.widgets.ButtonWidget.CALL_SERVICE" />
+                <action android:name="io.altenems.companion.android.widgets.ButtonWidget.CALL_SERVICE_AUTH" />
             </intent-filter>
 
             <meta-data
@@ -206,7 +216,7 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="io.homeassistant.companion.android.widgets.camera.CameraWidget.UPDATE_IMAGE" />
+                <action android:name="io.altenems.companion.android.widgets.camera.CameraWidget.UPDATE_IMAGE" />
             </intent-filter>
 
             <meta-data
@@ -240,12 +250,12 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="io.homeassistant.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.UPDATE_MEDIA_IMAGE" />
-                <action android:name="io.homeassistant.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PREV_TRACK" />
-                <action android:name="io.homeassistant.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_REWIND" />
-                <action android:name="io.homeassistant.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PLAYPAUSE" />
-                <action android:name="io.homeassistant.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_FASTFORWARD" />
-                <action android:name="io.homeassistant.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_NEXT_TRACK" />
+                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.UPDATE_MEDIA_IMAGE" />
+                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PREV_TRACK" />
+                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_REWIND" />
+                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PLAYPAUSE" />
+                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_FASTFORWARD" />
+                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_NEXT_TRACK" />
             </intent-filter>
 
             <meta-data
@@ -262,7 +272,7 @@
                 <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
                 <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
                 <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
-                <action android:name="io.homeassistant.companion.android.background.REQUEST_SENSORS_UPDATE" />
+                <action android:name="io.altenems.companion.android.background.REQUEST_SENSORS_UPDATE" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
@@ -331,7 +341,7 @@
             android:exported="true">
             <meta-data
                 android:name="android.service.controls.META_DATA_PANEL_ACTIVITY"
-                android:value="${applicationId}/io.homeassistant.companion.android.controls.HaControlsPanelActivity" />
+                android:value="${applicationId}/io.altenems.companion.android.controls.HaControlsPanelActivity" />
             <intent-filter>
                 <action android:name="android.service.controls.ControlsProviderService"/>
             </intent-filter>
@@ -341,7 +351,7 @@
             android:permission="android.permission.BIND_CONTROLS"
             android:exported="true"
             android:resizeableActivity="true"
-            android:taskAffinity="io.homeassistant.companion.android.controls"
+            android:taskAffinity="io.altenems.companion.android.controls"
             android:enabled="false" />
 
         <receiver
@@ -360,7 +370,7 @@
             android:exported="true"
             tools:ignore="ExportedReceiver">
             <intent-filter>
-                <action android:name="io.homeassistant.companion.android.background.REQUEST_ACCURATE_UPDATE" />
+                <action android:name="io.altenems.companion.android.background.REQUEST_ACCURATE_UPDATE" />
             </intent-filter>
         </receiver>
 
@@ -369,7 +379,7 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="io.homeassistant.companion.android.background.REQUEST_ACTIVITY_UPDATES" />
+                <action android:name="io.altenems.companion.android.background.REQUEST_ACTIVITY_UPDATES" />
             </intent-filter>
         </receiver>
 
@@ -404,7 +414,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="homeassistant"
+                    android:scheme="altenems"
                     android:host="invite" />
             </intent-filter>
 
@@ -416,7 +426,7 @@
 
                 <data
                     android:host="navigate"
-                    android:scheme="homeassistant" />
+                    android:scheme="altenems" />
             </intent-filter>
         </activity>
 
@@ -425,14 +435,14 @@
             android:parentActivityName=".settings.SettingsActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:theme="@style/Theme.HomeAssistant.Config">
+            android:theme="@style/Theme.altenems.Config">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="homeassistant"
+                    android:scheme="altenems"
                     android:host="wear-phone-signin" />
             </intent-filter>
         </activity>
@@ -441,7 +451,7 @@
             android:name=".settings.wear.views.SettingsWearMainView"
             android:parentActivityName=".settings.SettingsActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.HomeAssistant.Config" />
+            android:theme="@style/Theme.altenems.Config" />
 
         <service android:name=".onboarding.WearOnboardingListener"
             android:exported="true">
@@ -484,16 +494,16 @@
             android:parentActivityName=".webview.WebViewActivity"
             android:exported="false"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.HomeAssistant.Config" />
+            android:theme="@style/Theme.altenems.Config" />
 
         <activity
             android:name=".nfc.TagReaderActivity"
             android:label="@string/tag_reader_title"
             android:launchMode="singleTask"
-            android:taskAffinity="io.homeassistant.companion.android.tag.reader"
+            android:taskAffinity="io.altenems.companion.android.tag.reader"
             android:autoRemoveFromRecents="true"
             android:exported="true"
-            android:theme="@style/Theme.HomeAssistant.TranslucentOverlay">
+            android:theme="@style/Theme.altenems.TranslucentOverlay">
             <tools:validation testUrl="https://www.home-assistant.io/tag/123e4567-e89b-12d3-a456-426614174000" />
 
             <intent-filter>
@@ -520,7 +530,7 @@
             android:name=".nfc.NfcSetupActivity"
             android:exported="false"
             android:label="@string/nfc_title_nfc_setup"
-            android:theme="@style/Theme.HomeAssistant.Config" />
+            android:theme="@style/Theme.altenems.Config" />
 
         <activity android:name=".share.ShareActivity"
             android:exported="true">
@@ -534,16 +544,16 @@
         <activity
             android:name=".barcode.BarcodeScannerActivity"
             android:exported="false"
-            android:theme="@style/Theme.HomeAssistant.Config" />
+            android:theme="@style/Theme.altenems.Config" />
 
         <activity android:name=".assist.AssistActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"
             android:launchMode="singleTask"
-            android:taskAffinity="io.homeassistant.companion.android.assist"
+            android:taskAffinity="io.altenems.companion.android.assist"
             android:autoRemoveFromRecents="true"
             android:showWhenLocked="true"
-            android:theme="@style/Theme.HomeAssistant.TranslucentOverlay">
+            android:theme="@style/Theme.altenems.TranslucentOverlay">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -564,7 +574,7 @@
             android:icon="@mipmap/ic_assist_launcher"
             android:exported="true"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.HomeAssistant.Config">
+            android:theme="@style/Theme.altenems.Config">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT"/>
             </intent-filter>

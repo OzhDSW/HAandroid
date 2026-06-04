@@ -1,0 +1,62 @@
+package io.altenems.companion.android.onboarding.connection
+
+import android.webkit.WebChromeClient
+import android.webkit.WebViewClient
+import androidx.compose.runtime.Composable
+import com.android.tools.screenshot.PreviewTest
+import io.altenems.companion.android.common.compose.theme.HAThemeForPreview
+import io.altenems.companion.android.util.compose.HAPreviews
+
+class ConnectionScreenshotTest {
+
+    @PreviewTest
+    @HAPreviews
+    @Composable
+    fun `ConnectionScreen loading`() {
+        HAThemeForPreview {
+            ConnectionScreen(
+                url = "https://www.example.com",
+                isLoading = true,
+                isError = false,
+                webViewClient = WebViewClient(),
+                webChromeClient = WebChromeClient(),
+                onBackClick = {},
+                onWebViewCreationFailed = {},
+            )
+        }
+    }
+
+    @PreviewTest
+    @HAPreviews
+    @Composable
+    fun `ConnectionScreen loaded`() {
+        HAThemeForPreview {
+            ConnectionScreen(
+                url = "https://www.example.com",
+                isLoading = false,
+                isError = false,
+                webViewClient = WebViewClient(),
+                webChromeClient = WebChromeClient(),
+                onBackClick = {},
+                onWebViewCreationFailed = {},
+            )
+        }
+    }
+
+    @PreviewTest
+    @HAPreviews
+    @Composable
+    fun `ConnectionScreen error`() {
+        HAThemeForPreview {
+            ConnectionScreen(
+                url = "https://www.example.com",
+                isLoading = false,
+                isError = true,
+                webViewClient = WebViewClient(),
+                webChromeClient = WebChromeClient(),
+                onBackClick = {},
+                onWebViewCreationFailed = {},
+            )
+        }
+    }
+}

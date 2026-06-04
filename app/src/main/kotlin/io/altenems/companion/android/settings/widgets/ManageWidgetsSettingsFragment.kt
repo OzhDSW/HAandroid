@@ -1,0 +1,39 @@
+package io.altenems.companion.android.settings.widgets
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
+import io.altenems.companion.android.common.R as commonR
+import io.altenems.companion.android.settings.addHelpMenuProvider
+import io.altenems.companion.android.settings.widgets.views.ManageWidgetsView
+import io.altenems.companion.android.util.compose.altenemsAppTheme
+
+@AndroidEntryPoint
+class ManageWidgetsSettingsFragment : Fragment() {
+
+    val viewModel: ManageWidgetsViewModel by viewModels()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        return ComposeView(requireContext()).apply {
+            setContent {
+                altenemsAppTheme {
+                    ManageWidgetsView(viewModel = viewModel)
+                }
+            }
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        addHelpMenuProvider("https://companion.home-assistant.io/docs/integrations/android-widgets")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.title = getString(commonR.string.widgets)
+    }
+}

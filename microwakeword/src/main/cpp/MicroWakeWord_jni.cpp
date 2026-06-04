@@ -83,7 +83,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/) {
         return JNI_ERR;
     }
 
-    jclass clazz = env->FindClass("io/homeassistant/companion/android/microwakeword/MicroWakeWord");
+    jclass clazz = env->FindClass("io/altenems/companion/android/microwakeword/MicroWakeWord");
     if (clazz == nullptr) {
         LOGE(LOG_TAG, "Failed to find MicroWakeWord class for JNI registration");
         return JNI_ERR;

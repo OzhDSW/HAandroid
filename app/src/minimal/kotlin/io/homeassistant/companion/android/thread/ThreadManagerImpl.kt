@@ -1,9 +1,9 @@
-package io.homeassistant.companion.android.thread
+package io.altenems.companion.android.thread
 
 import android.content.Context
 import android.content.IntentSender
 import androidx.activity.result.ActivityResult
-import io.homeassistant.companion.android.common.data.websocket.impl.entities.ThreadDatasetResponse
+import io.altenems.companion.android.common.data.websocket.impl.entities.ThreadDatasetResponse
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 

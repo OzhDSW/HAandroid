@@ -47,6 +47,6 @@ dependencyLocking {
 
 tasks.jar {
     manifest.attributes(
-        mapOf("Lint-Registry-v2" to "io.homeassistant.lint.LintRegistry"),
+        mapOf("Lint-Registry-v2" to "io.altenems.lint.LintRegistry"),
     )
 }

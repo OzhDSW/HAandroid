@@ -1,4 +1,4 @@
-package io.homeassistant.companion.android.location
+package io.altenems.companion.android.location
 
 import android.Manifest
 import android.content.Context
@@ -10,8 +10,8 @@ import android.os.CancellationSignal
 import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import androidx.core.location.LocationManagerCompat
-import io.homeassistant.companion.android.common.util.instant
-import io.homeassistant.companion.android.sensors.GeocodeSensorManager.Companion.LOCATION_OUTDATED_THRESHOLD
+import io.altenems.companion.android.common.util.instant
+import io.altenems.companion.android.sensors.GeocodeSensorManager.Companion.LOCATION_OUTDATED_THRESHOLD
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import kotlin.time.Clock

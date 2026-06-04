@@ -130,4 +130,8 @@
         <item>8a5e57e998757cfc3b42ce1945b54e0cc14d79b525b7d9b6905a691053564e33,
             com.harman.ignite.car.app.host.tml</item>
     </string-array>
+
+    <string-array name="servers_list" translatable="false">
+        <item>http://10.10.0.1:8121</item>
+    </string-array>
 </resources>

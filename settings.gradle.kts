@@ -1,6 +1,6 @@
 include(":common", ":app", ":wear", ":automotive", ":testing-unit", ":lint", ":microwakeword")
 
-rootProject.name = "home-assistant-android"
+rootProject.name = "alten-ems-android"
 
 includeBuild("build-logic")
 

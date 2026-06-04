@@ -1,4 +1,4 @@
-package io.homeassistant.companion.android.fakes
+package io.altenems.companion.android.fakes
 
 import android.content.Context
 import android.net.Uri

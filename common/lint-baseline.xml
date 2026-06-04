@@ -7,7 +7,7 @@
         errorLine1="                telephonyManager.isDataRoamingEnabled"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/MobileDataManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/MobileDataManager.kt"
             line="76"
             column="17"/>
     </issue>
@@ -18,7 +18,7 @@
         errorLine1="                telephonyManager.isDataEnabled"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/MobileDataManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/MobileDataManager.kt"
             line="78"
             column="17"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="        val subscription = context.applicationContext.getSystemService&lt;SubscriptionManager>()"
         errorLine2="                           ^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/PhoneStateSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/PhoneStateSensorManager.kt"
             line="273"
             column="28"/>
     </issue>
@@ -40,7 +40,7 @@
         errorLine1="        val subscription = context.applicationContext.getSystemService&lt;SubscriptionManager>()"
         errorLine2="                           ^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/PhoneStateSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/PhoneStateSensorManager.kt"
             line="318"
             column="28"/>
     </issue>
@@ -51,7 +51,7 @@
         errorLine1="            state = dataTypeMap.getOrDefault(telephonyManager.dataNetworkType, STATE_UNKNOWN)"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/PhoneStateSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/PhoneStateSensorManager.kt"
             line="326"
             column="46"/>
     </issue>
@@ -62,7 +62,7 @@
         errorLine1="        notify(NOTIFICATION_ID, notification)"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/database/migration/Utils.kt"
+            file="src/main/kotlin/io/altenems/companion/android/database/migration/Utils.kt"
             line="53"
             column="9"/>
     </issue>
@@ -73,7 +73,7 @@
         errorLine1="        notify(NOTIFICATION_ID, notification)"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/database/migration/Utils.kt"
+            file="src/main/kotlin/io/altenems/companion/android/database/migration/Utils.kt"
             line="53"
             column="9"/>
     </issue>
@@ -84,7 +84,7 @@
         errorLine1="        val sizeWithThousandsSeparator = String.format(&quot;%,d&quot;, sizeLong)"
         errorLine2="                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/StorageSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/StorageSensorManager.kt"
             line="138"
             column="42"/>
     </issue>
@@ -95,7 +95,7 @@
         errorLine1="        config.setLocale(Locale(&quot;en&quot;))"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/SensorReceiverBase.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/SensorReceiverBase.kt"
             line="402"
             column="9"/>
     </issue>
@@ -117,7 +117,7 @@
         errorLine1="            (sensorId == bleTransmitter.id &amp;&amp; Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {"
         errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/BluetoothSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/BluetoothSensorManager.kt"
             line="178"
             column="47"/>
     </issue>
@@ -128,7 +128,7 @@
         errorLine1="            (sensorId == beaconMonitor.id &amp;&amp; Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.Q) -> {"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/BluetoothSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/BluetoothSensorManager.kt"
             line="185"
             column="46"/>
     </issue>
@@ -139,7 +139,7 @@
         errorLine1="            (sensorId == beaconMonitor.id &amp;&amp; Build.VERSION.SDK_INT &lt;= Build.VERSION_CODES.R) -> {"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/BluetoothSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/BluetoothSensorManager.kt"
             line="194"
             column="46"/>
     </issue>
@@ -150,7 +150,7 @@
         errorLine1="            (sensorId == beaconMonitor.id &amp;&amp; Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/BluetoothSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/BluetoothSensorManager.kt"
             line="204"
             column="46"/>
     </issue>
@@ -161,7 +161,7 @@
         errorLine1="                Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q &amp;&amp;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/PhoneStateSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/PhoneStateSensorManager.kt"
             line="130"
             column="17"/>
     </issue>
@@ -172,7 +172,7 @@
         errorLine1="                Build.VERSION.SDK_INT >= Build.VERSION_CODES.N &amp;&amp;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/PhoneStateSensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/PhoneStateSensorManager.kt"
             line="144"
             column="17"/>
     </issue>
@@ -183,7 +183,7 @@
         errorLine1="            MapAnySerializer,"
         errorLine2="            ~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/data/authentication/impl/AuthenticationRepositoryImpl.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/data/authentication/impl/AuthenticationRepositoryImpl.kt"
             line="55"
             column="13"/>
     </issue>
@@ -194,7 +194,7 @@
         errorLine1="                            kotlinJsonMapper.encodeToString(AnySerializer, item.value)"
         errorLine2="                                                            ~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/sensors/SensorManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/sensors/SensorManager.kt"
             line="298"
             column="61"/>
     </issue>
@@ -205,7 +205,7 @@
         errorLine1="                    kotlinJsonMapper.encodeToString(MapAnySerializer, outbound),"
         errorLine2="                                                    ~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/data/websocket/impl/WebSocketCoreImpl.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/data/websocket/impl/WebSocketCoreImpl.kt"
             line="273"
             column="53"/>
     </issue>
@@ -216,7 +216,7 @@
         errorLine1="                MapAnySerializer,"
         errorLine2="                ~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/common/data/websocket/impl/WebSocketCoreImpl.kt"
+            file="src/main/kotlin/io/altenems/companion/android/common/data/websocket/impl/WebSocketCoreImpl.kt"
             line="534"
             column="17"/>
     </issue>

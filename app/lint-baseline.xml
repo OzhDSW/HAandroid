@@ -7,7 +7,7 @@
         errorLine1="            actReg.removeActivityUpdates(pendingIntent)"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/sensors/ActivitySensorManager.kt"
+            file="src/full/kotlin/io/altenems/companion/android/sensors/ActivitySensorManager.kt"
             line="232"
             column="13"/>
     </issue>
@@ -18,7 +18,7 @@
         errorLine1="                actReg.requestActivityUpdates(TimeUnit.MINUTES.toMillis(if (fastUpdate) 1 else 2), pendingIntent)"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/sensors/ActivitySensorManager.kt"
+            file="src/full/kotlin/io/altenems/companion/android/sensors/ActivitySensorManager.kt"
             line="237"
             column="17"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="                        ActivityRecognition.getClient(context).requestSleepSegmentUpdates("
         errorLine2="                        ^">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/sensors/ActivitySensorManager.kt"
+            file="src/full/kotlin/io/altenems/companion/android/sensors/ActivitySensorManager.kt"
             line="257"
             column="25"/>
     </issue>
@@ -40,7 +40,7 @@
         errorLine1="                        ActivityRecognition.getClient(context).requestSleepSegmentUpdates("
         errorLine2="                        ^">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/sensors/ActivitySensorManager.kt"
+            file="src/full/kotlin/io/altenems/companion/android/sensors/ActivitySensorManager.kt"
             line="265"
             column="25"/>
     </issue>
@@ -51,7 +51,7 @@
         errorLine1="                        ActivityRecognition.getClient(context).requestSleepSegmentUpdates("
         errorLine2="                        ^">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/sensors/ActivitySensorManager.kt"
+            file="src/full/kotlin/io/altenems/companion/android/sensors/ActivitySensorManager.kt"
             line="273"
             column="25"/>
     </issue>
@@ -62,7 +62,7 @@
         errorLine1="        NotificationManagerCompat.from(context)"
         errorLine2="        ^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/DataUriDownloadManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/DataUriDownloadManager.kt"
             line="78"
             column="9"/>
     </issue>
@@ -73,7 +73,7 @@
         errorLine1="                notificationManager.notify(notificationId, notificationBuilder.build())"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/location/HighAccuracyLocationService.kt"
+            file="src/full/kotlin/io/altenems/companion/android/location/HighAccuracyLocationService.kt"
             line="109"
             column="17"/>
     </issue>
@@ -84,7 +84,7 @@
         errorLine1="                notify(tag, messageId, notificationBuilder.build())"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/notifications/MessagingManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/notifications/MessagingManager.kt"
             line="1097"
             column="17"/>
     </issue>
@@ -106,7 +106,7 @@
         errorLine1="                    &quot;&quot; + String.format(&quot;%8.5f&quot;, latitude) + &quot;  &quot; +"
         errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/location/HighAccuracyLocationService.kt"
+            file="src/full/kotlin/io/altenems/companion/android/location/HighAccuracyLocationService.kt"
             line="96"
             column="26"/>
     </issue>
@@ -117,7 +117,7 @@
         errorLine1="                        String.format(&quot;%8.5f&quot;, longitude)"
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/location/HighAccuracyLocationService.kt"
+            file="src/full/kotlin/io/altenems/companion/android/location/HighAccuracyLocationService.kt"
             line="97"
             column="25"/>
     </issue>
@@ -128,7 +128,7 @@
         errorLine1="            Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS)"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/assist/DefaultAssistantManager.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/assist/DefaultAssistantManager.kt"
             line="92"
             column="20"/>
     </issue>
@@ -139,7 +139,7 @@
         errorLine1="            CAMERA_DOMAIN to CameraControl,"
         errorLine2="                             ~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/controls/HaControlsProviderService.kt"
+            file="src/main/kotlin/io/altenems/companion/android/controls/HaControlsProviderService.kt"
             line="47"
             column="30"/>
     </issue>
@@ -381,7 +381,7 @@
         errorLine1="                                    Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/websocket/WebsocketSettingFragment.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/websocket/WebsocketSettingFragment.kt"
             line="72"
             column="46"/>
     </issue>
@@ -392,7 +392,7 @@
         errorLine1="class LaunchActivity : AppCompatActivity() {"
         errorLine2="      ~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/launch/LaunchActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/launch/LaunchActivity.kt"
             line="58"
             column="7"/>
     </issue>
@@ -403,7 +403,7 @@
         errorLine1="                String.format(Locale.getDefault(), &quot;%02d:%02d:%02d&quot;, hours, minutes, seconds)"
         errorLine2="                              ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/media/player/HAMediaPlayer.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/media/player/HAMediaPlayer.kt"
             line="306"
             column="31"/>
     </issue>
@@ -414,7 +414,7 @@
         errorLine1="                String.format(Locale.getDefault(), &quot;%02d:%02d&quot;, minutes, seconds)"
         errorLine2="                              ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/media/player/HAMediaPlayer.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/media/player/HAMediaPlayer.kt"
             line="308"
             column="31"/>
     </issue>
@@ -480,7 +480,7 @@
         errorLine1="                        context.getString(commonR.string.missing_camera_permission),"
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/barcode/view/BarcodeScannerView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/barcode/view/BarcodeScannerView.kt"
             line="132"
             column="25"/>
     </issue>
@@ -491,7 +491,7 @@
         errorLine1="                        context.getString(commonR.string.settings),"
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/barcode/view/BarcodeScannerView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/barcode/view/BarcodeScannerView.kt"
             line="133"
             column="25"/>
     </issue>
@@ -502,7 +502,7 @@
         errorLine1="                onToolbarTitleChanged(context.getString(R.string.gestures))"
         errorLine2="                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/gestures/views/GesturesScreen.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/gestures/views/GesturesScreen.kt"
             line="73"
             column="39"/>
     </issue>
@@ -513,7 +513,7 @@
         errorLine1="                onToolbarTitleChanged(context.getString(action.gesture.fullDescription))"
         errorLine2="                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/gestures/views/GesturesScreen.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/gestures/views/GesturesScreen.kt"
             line="76"
             column="39"/>
     </issue>
@@ -524,7 +524,7 @@
         errorLine1="                scaffoldState.snackbarHostState.showSnackbar(context.getString(it))"
         errorLine2="                                                             ~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/qs/views/ManageTilesView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/qs/views/ManageTilesView.kt"
             line="64"
             column="62"/>
     </issue>
@@ -535,7 +535,7 @@
         errorLine1="                    onShowSnackbar(context.getString(it.messageRes), null)"
         errorLine2="                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/onboarding/nameyourdevice/navigation/NameYourDeviceNavigation.kt"
+            file="src/main/kotlin/io/altenems/companion/android/onboarding/nameyourdevice/navigation/NameYourDeviceNavigation.kt"
             line="68"
             column="36"/>
     </issue>
@@ -546,7 +546,7 @@
         errorLine1="                scaffoldState.snackbarHostState.showSnackbar(context.getString(it))"
         errorLine2="                                                             ~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/nfc/views/NfcNavigationView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/nfc/views/NfcNavigationView.kt"
             line="65"
             column="62"/>
     </issue>
@@ -557,7 +557,7 @@
         errorLine1="                                                    context.getString("
         errorLine2="                                                    ^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/notification/views/NotificationChannelView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/notification/views/NotificationChannelView.kt"
             line="99"
             column="53"/>
     </issue>
@@ -568,7 +568,7 @@
         errorLine1="                                                    context.getString(R.string.undo),"
         errorLine2="                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/notification/views/NotificationChannelView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/notification/views/NotificationChannelView.kt"
             line="103"
             column="53"/>
     </issue>
@@ -579,7 +579,7 @@
         errorLine1="                context.getString(it.message),"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/sensor/views/SensorDetailView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/sensor/views/SensorDetailView.kt"
             line="120"
             column="17"/>
     </issue>
@@ -590,7 +590,7 @@
         errorLine1="                context.getString(commonR.string.settings),"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/sensor/views/SensorDetailView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/sensor/views/SensorDetailView.kt"
             line="121"
             column="17"/>
     </issue>
@@ -601,7 +601,7 @@
         errorLine1="        val stringId = app.resources.getIdentifier(identifierString, &quot;string&quot;, app.packageName)"
         errorLine2="                                     ~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/sensor/SensorDetailViewModel.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/sensor/SensorDetailViewModel.kt"
             line="368"
             column="38"/>
     </issue>
@@ -634,7 +634,7 @@
         errorLine1="    override fun onReceive(context: Context, intent: Intent) {"
         errorLine2="                 ~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/websocket/WebsocketBroadcastReceiver.kt"
+            file="src/main/kotlin/io/altenems/companion/android/websocket/WebsocketBroadcastReceiver.kt"
             line="14"
             column="18"/>
     </issue>
@@ -667,7 +667,7 @@
         errorLine1="                Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &amp;&amp;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/SettingsFragment.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/SettingsFragment.kt"
             line="542"
             column="17"/>
     </issue>
@@ -678,7 +678,7 @@
         errorLine1="                Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &amp;&amp;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/SettingsFragment.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/SettingsFragment.kt"
             line="542"
             column="17"/>
     </issue>
@@ -689,7 +689,7 @@
         errorLine1="        private lateinit var notificationBuilder: NotificationCompat.Builder"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/location/HighAccuracyLocationService.kt"
+            file="src/full/kotlin/io/altenems/companion/android/location/HighAccuracyLocationService.kt"
             line="34"
             column="9"/>
     </issue>
@@ -700,7 +700,7 @@
         errorLine1="        private lateinit var notificationManagerCompat: NotificationManagerCompat"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/location/HighAccuracyLocationService.kt"
+            file="src/full/kotlin/io/altenems/companion/android/location/HighAccuracyLocationService.kt"
             line="36"
             column="9"/>
     </issue>
@@ -982,7 +982,7 @@
 
     <issue
         id="Overdraw"
-        message="Possible overdraw: Root element paints background `?android:attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/Theme.HomeAssistant`)"
+        message="Possible overdraw: Root element paints background `?android:attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/Theme.altenems`)"
         errorLine1="    android:background=&quot;?android:attr/selectableItemBackground&quot;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -1048,8 +1048,8 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.style.TextAppearance_HomeAssistant_Title` appears to be unused"
-        errorLine1="    &lt;style name=&quot;TextAppearance.HomeAssistant.Title&quot; parent=&quot;TextAppearance.MaterialComponents.Headline2&quot;>"
+        message="The resource `R.style.TextAppearance_altenems_Title` appears to be unused"
+        errorLine1="    &lt;style name=&quot;TextAppearance.altenems.Title&quot; parent=&quot;TextAppearance.MaterialComponents.Headline2&quot;>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/styles.xml"
@@ -1059,8 +1059,8 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.style.TextAppearance_HomeAssistant_Medium` appears to be unused"
-        errorLine1="    &lt;style name=&quot;TextAppearance.HomeAssistant.Medium&quot; parent=&quot;TextAppearance.MaterialComponents.Headline3&quot;>"
+        message="The resource `R.style.TextAppearance_altenems_Medium` appears to be unused"
+        errorLine1="    &lt;style name=&quot;TextAppearance.altenems.Medium&quot; parent=&quot;TextAppearance.MaterialComponents.Headline3&quot;>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/styles.xml"
@@ -1070,8 +1070,8 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.style.Widget_HomeAssistant_Button_Colored` appears to be unused"
-        errorLine1="    &lt;style name=&quot;Widget.HomeAssistant.Button.Colored&quot; parent=&quot;Widget.MaterialComponents.Button&quot;>"
+        message="The resource `R.style.Widget_altenems_Button_Colored` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Widget.altenems.Button.Colored&quot; parent=&quot;Widget.MaterialComponents.Button&quot;>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/styles.xml"
@@ -1081,8 +1081,8 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.style.Widget_HomeAssistant_Button_Outlined` appears to be unused"
-        errorLine1="    &lt;style name=&quot;Widget.HomeAssistant.Button.Outlined&quot; parent=&quot;Widget.MaterialComponents.Button.OutlinedButton&quot;>"
+        message="The resource `R.style.Widget_altenems_Button_Outlined` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Widget.altenems.Button.Outlined&quot; parent=&quot;Widget.MaterialComponents.Button.OutlinedButton&quot;>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/styles.xml"
@@ -1092,8 +1092,8 @@
 
     <issue
         id="UnusedResources"
-        message="The resource `R.style.ThemeOverlay_HomeAssistant_ActionBar` appears to be unused"
-        errorLine1="    &lt;style name=&quot;ThemeOverlay.HomeAssistant.ActionBar&quot; parent=&quot;ThemeOverlay.MaterialComponents.ActionBar&quot;>"
+        message="The resource `R.style.ThemeOverlay_altenems_ActionBar` appears to be unused"
+        errorLine1="    &lt;style name=&quot;ThemeOverlay.altenems.ActionBar&quot; parent=&quot;ThemeOverlay.MaterialComponents.ActionBar&quot;>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/styles.xml"
@@ -1208,7 +1208,7 @@
         errorLine1="                    MapAnySerializer,"
         errorLine2="                    ~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/button/ButtonWidget.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/button/ButtonWidget.kt"
             line="318"
             column="21"/>
     </issue>
@@ -1219,7 +1219,7 @@
         errorLine1="                                MapAnySerializer,"
         errorLine2="                                ~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/button/ButtonWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/button/ButtonWidgetConfigureActivity.kt"
             line="151"
             column="33"/>
     </issue>
@@ -1230,7 +1230,7 @@
         errorLine1="            serviceData = kotlinJsonMapper.encodeToString(MapAnySerializer, actionDataMap),"
         errorLine2="                                                          ~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/button/ButtonWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/button/ButtonWidgetConfigureActivity.kt"
             line="419"
             column="59"/>
     </issue>
@@ -1241,7 +1241,7 @@
         errorLine1="            ShortcutManagerCompat.addDynamicShortcuts(app, listOf(shortcut))"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/shortcuts/ManageShortcutsViewModel.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/shortcuts/ManageShortcutsViewModel.kt"
             line="216"
             column="13"/>
     </issue>
@@ -1252,7 +1252,7 @@
         errorLine1="internal val LocalGlanceColors: ProvidableCompositionLocal&lt;ColorProviders> = staticCompositionLocalOf {"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/Theme.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/Theme.kt"
             line="152"
             column="1"/>
     </issue>
@@ -1263,7 +1263,7 @@
         errorLine1="@Composable"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/improv/ui/ImprovSheetView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/improv/ui/ImprovSheetView.kt"
             line="171"
             column="1"/>
     </issue>
@@ -1274,7 +1274,7 @@
         errorLine1="@Composable"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/improv/ui/ImprovSheetView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/improv/ui/ImprovSheetView.kt"
             line="244"
             column="1"/>
     </issue>
@@ -1285,7 +1285,7 @@
         errorLine1="@RequiresApi(Build.VERSION_CODES.O)"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/InfoNotification.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/InfoNotification.kt"
             line="23"
             column="1"/>
     </issue>
@@ -1296,7 +1296,7 @@
         errorLine1="@RequiresApi(Build.VERSION_CODES.N_MR1)"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/shortcuts/views/ManageShortcutsView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/shortcuts/views/ManageShortcutsView.kt"
             line="85"
             column="1"/>
     </issue>
@@ -1307,7 +1307,7 @@
         errorLine1="@Composable"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/server/ServerChooserView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/server/ServerChooserView.kt"
             line="39"
             column="1"/>
     </issue>
@@ -1318,7 +1318,7 @@
         errorLine1="@Preview"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/url/views/ExternalUrlView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/url/views/ExternalUrlView.kt"
             line="89"
             column="1"/>
     </issue>
@@ -1329,7 +1329,7 @@
         errorLine1="@Preview"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/url/views/ExternalUrlView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/url/views/ExternalUrlView.kt"
             line="101"
             column="1"/>
     </issue>
@@ -1340,7 +1340,7 @@
         errorLine1="@Preview"
         errorLine2="^">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/url/views/ExternalUrlView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/url/views/ExternalUrlView.kt"
             line="113"
             column="1"/>
     </issue>
@@ -1351,7 +1351,7 @@
         errorLine1="    serversList: List&lt;Server>,"
         errorLine2="                 ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/vehicle/views/AndroidAutoFavoritesView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/vehicle/views/AndroidAutoFavoritesView.kt"
             line="47"
             column="18"/>
     </issue>
@@ -1362,7 +1362,7 @@
         errorLine1="    availableModels: List&lt;MicroWakeWordModelConfig>,"
         errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/assist/AssistSettingsScreen.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/assist/AssistSettingsScreen.kt"
             line="342"
             column="22"/>
     </issue>
@@ -1373,7 +1373,7 @@
         errorLine1="    conversation: List&lt;AssistMessage>,"
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/assist/ui/AssistSheetView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/assist/ui/AssistSheetView.kt"
             line="89"
             column="19"/>
     </issue>
@@ -1384,7 +1384,7 @@
         errorLine1="    pipelines: List&lt;AssistUiPipeline>,"
         errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/assist/ui/AssistSheetView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/assist/ui/AssistSheetView.kt"
             line="90"
             column="16"/>
     </issue>
@@ -1395,7 +1395,7 @@
         errorLine1="    pipelines: List&lt;AssistUiPipeline>,"
         errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/assist/ui/AssistSheetView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/assist/ui/AssistSheetView.kt"
             line="169"
             column="16"/>
     </issue>
@@ -1406,7 +1406,7 @@
         errorLine1="    servers: List&lt;Server>,"
         errorLine2="             ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/assist/AssistShortcutView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/assist/AssistShortcutView.kt"
             line="41"
             column="14"/>
     </issue>
@@ -1417,7 +1417,7 @@
         errorLine1="    entities: List&lt;Entity>,"
         errorLine2="              ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="189"
             column="15"/>
     </issue>
@@ -1428,7 +1428,7 @@
         errorLine1="    entityRegistry: List&lt;EntityRegistryResponse>? = null,"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="195"
             column="21"/>
     </issue>
@@ -1439,7 +1439,7 @@
         errorLine1="    deviceRegistry: List&lt;DeviceRegistryResponse>? = null,"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="196"
             column="21"/>
     </issue>
@@ -1450,7 +1450,7 @@
         errorLine1="    areaRegistry: List&lt;AreaRegistryResponse>? = null,"
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="197"
             column="19"/>
     </issue>
@@ -1461,7 +1461,7 @@
         errorLine1="    entities: List&lt;EntityPickerItem>,"
         errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="235"
             column="15"/>
     </issue>
@@ -1472,7 +1472,7 @@
         errorLine1="    entities: List&lt;EntityPickerItem>,"
         errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="405"
             column="15"/>
     </issue>
@@ -1483,7 +1483,7 @@
         errorLine1="    entities: List&lt;EntityPickerItem>,"
         errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="448"
             column="15"/>
     </issue>
@@ -1494,7 +1494,7 @@
         errorLine1="    entities: List&lt;EntityPickerItem>,"
         errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPicker.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPicker.kt"
             line="475"
             column="15"/>
     </issue>
@@ -1505,7 +1505,7 @@
         errorLine1="    entities: List&lt;EntityPickerItem>,"
         errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/entity/EntityPickerFilter.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/entity/EntityPickerFilter.kt"
             line="74"
             column="15"/>
     </issue>
@@ -1516,7 +1516,7 @@
         errorLine1="    keys: List&lt;String>,"
         errorLine2="          ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/ExposedDropdownMenu.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/ExposedDropdownMenu.kt"
             line="29"
             column="11"/>
     </issue>
@@ -1527,7 +1527,7 @@
         errorLine1="    servers: List&lt;Server>,"
         errorLine2="             ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/compose/ExposedDropdownMenu.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/compose/ExposedDropdownMenu.kt"
             line="66"
             column="14"/>
     </issue>
@@ -1538,7 +1538,7 @@
         errorLine1="    gestureActions: Map&lt;HAGesture, GestureAction>,"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/gestures/views/GesturesListView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/gestures/views/GesturesListView.kt"
             line="30"
             column="21"/>
     </issue>
@@ -1549,7 +1549,7 @@
         errorLine1="    gestureActions: Map&lt;HAGesture, GestureAction>,"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/gestures/views/GesturesScreen.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/gestures/views/GesturesScreen.kt"
             line="35"
             column="21"/>
     </issue>
@@ -1560,7 +1560,7 @@
         errorLine1="    icons: List&lt;IIcon>,"
         errorLine2="           ~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/util/icondialog/IconDialogGrid.kt"
+            file="src/main/kotlin/io/altenems/companion/android/util/icondialog/IconDialogGrid.kt"
             line="38"
             column="12"/>
     </issue>
@@ -1571,7 +1571,7 @@
         errorLine1="    serversList: List&lt;Server>,"
         errorLine2="                 ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/developer/location/views/LocationTrackingView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/developer/location/views/LocationTrackingView.kt"
             line="72"
             column="18"/>
     </issue>
@@ -1582,7 +1582,7 @@
         errorLine1="fun LocationTrackingHistoryRow(item: LocationHistoryItem?, servers: List&lt;Server>, modifier: Modifier = Modifier) {"
         errorLine2="                                                                    ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/developer/location/views/LocationTrackingView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/developer/location/views/LocationTrackingView.kt"
             line="142"
             column="69"/>
     </issue>
@@ -1593,7 +1593,7 @@
         errorLine1="    authRequiredList: List&lt;String>,"
         errorLine2="                      ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/controls/views/ManageControlsView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/controls/views/ManageControlsView.kt"
             line="72"
             column="23"/>
     </issue>
@@ -1604,7 +1604,7 @@
         errorLine1="    entitiesList: Map&lt;Int, List&lt;Entity>>,"
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/controls/views/ManageControlsView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/controls/views/ManageControlsView.kt"
             line="74"
             column="19"/>
     </issue>
@@ -1615,7 +1615,7 @@
         errorLine1="    serversList: List&lt;Server>,"
         errorLine2="                 ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/controls/views/ManageControlsView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/controls/views/ManageControlsView.kt"
             line="76"
             column="18"/>
     </issue>
@@ -1626,7 +1626,7 @@
         errorLine1="    servers: List&lt;Server>,"
         errorLine2="             ~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/matter/views/MatterCommissioningView.kt"
+            file="src/full/kotlin/io/altenems/companion/android/matter/views/MatterCommissioningView.kt"
             line="53"
             column="14"/>
     </issue>
@@ -1637,7 +1637,7 @@
         errorLine1="    dbSensor: List&lt;SensorWithAttributes>,"
         errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/sensor/views/SensorDetailView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/sensor/views/SensorDetailView.kt"
             line="356"
             column="15"/>
     </issue>
@@ -1648,7 +1648,7 @@
         errorLine1="    serverNames: Map&lt;Int, String>,"
         errorLine2="                 ~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/sensor/views/SensorDetailView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/sensor/views/SensorDetailView.kt"
             line="358"
             column="18"/>
     </issue>
@@ -1659,7 +1659,7 @@
         errorLine1="fun ServerChooserView(servers: List&lt;Server>, onServerSelected: (Int) -> Unit, modifier: Modifier = Modifier) {"
         errorLine2="                               ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/server/ServerChooserView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/server/ServerChooserView.kt"
             line="27"
             column="32"/>
     </issue>
@@ -1670,7 +1670,7 @@
         errorLine1="    templateTiles: Map&lt;Int, TemplateTileConfig>,"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/full/kotlin/io/homeassistant/companion/android/settings/wear/views/SettingsWearTemplateTileList.kt"
+            file="src/full/kotlin/io/altenems/companion/android/settings/wear/views/SettingsWearTemplateTileList.kt"
             line="27"
             column="20"/>
     </issue>
@@ -1681,7 +1681,7 @@
         errorLine1="    wifiSsids: List&lt;String>,"
         errorLine2="               ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/settings/ssid/views/SsidView.kt"
+            file="src/main/kotlin/io/altenems/companion/android/settings/ssid/views/SsidView.kt"
             line="70"
             column="16"/>
     </issue>
@@ -1692,7 +1692,7 @@
         errorLine1="private fun ListContent(todoItems: List&lt;TodoItemState>, displayComplete: Boolean) {"
         errorLine2="                                   ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/todo/TodoGlanceAppWidget.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/todo/TodoGlanceAppWidget.kt"
             line="181"
             column="36"/>
     </issue>
@@ -1703,7 +1703,7 @@
         errorLine1="    servers: List&lt;Server>,"
         errorLine2="             ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
             line="196"
             column="14"/>
     </issue>
@@ -1714,7 +1714,7 @@
         errorLine1="    entities: List&lt;Entity>,"
         errorLine2="              ~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
             line="199"
             column="15"/>
     </issue>
@@ -1725,7 +1725,7 @@
         errorLine1="    entityRegistry: List&lt;EntityRegistryResponse>? = null,"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
             line="210"
             column="21"/>
     </issue>
@@ -1736,7 +1736,7 @@
         errorLine1="    deviceRegistry: List&lt;DeviceRegistryResponse>? = null,"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
             line="211"
             column="21"/>
     </issue>
@@ -1747,7 +1747,7 @@
         errorLine1="    areaRegistry: List&lt;AreaRegistryResponse>? = null,"
         errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/todo/TodoWidgetConfigureActivity.kt"
             line="212"
             column="19"/>
     </issue>
@@ -1758,7 +1758,7 @@
         errorLine1="    fun LockedPanelView(modifier: Modifier = Modifier) {"
         errorLine2="        ~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/controls/HaControlsPanelActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/controls/HaControlsPanelActivity.kt"
             line="93"
             column="9"/>
     </issue>
@@ -1769,7 +1769,7 @@
         errorLine1="        fun TodoState.getColors(): ColorProviders {"
         errorLine2="            ~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/todo/TodoWidgetState.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/todo/TodoWidgetState.kt"
             line="46"
             column="13"/>
     </issue>
@@ -1802,7 +1802,7 @@
         errorLine1="                binding.textSize.setText(staticWidget.textSize.toInt().toString())"
         errorLine2="                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/entity/EntityWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/entity/EntityWidgetConfigureActivity.kt"
             line="132"
             column="42"/>
     </issue>
@@ -1813,7 +1813,7 @@
         errorLine1="                binding.textSize.setText(templateWidget.textSize.toInt().toString())"
         errorLine2="                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/kotlin/io/homeassistant/companion/android/widgets/template/TemplateWidgetConfigureActivity.kt"
+            file="src/main/kotlin/io/altenems/companion/android/widgets/template/TemplateWidgetConfigureActivity.kt"
             line="96"
             column="42"/>
     </issue>

@@ -1,8 +1,8 @@
-package io.homeassistant.companion.android.matter
+package io.altenems.companion.android.matter
 
 import android.content.Context
 import android.content.IntentSender
-import io.homeassistant.companion.android.common.data.websocket.impl.entities.MatterCommissionResponse
+import io.altenems.companion.android.common.data.websocket.impl.entities.MatterCommissionResponse
 import javax.inject.Inject
 
 class MatterManagerImpl @Inject constructor() : MatterManager {

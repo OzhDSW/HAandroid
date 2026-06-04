@@ -89,15 +89,15 @@ Code should be flavor-agnostic in the `main` source set whenever possible.
 - **Networking**: Retrofit (REST API), OkHttp (WebSocket to Home Assistant Core)
 - **Serialization**: Kotlinx.serialization
 - **Logging**: Timber for logging throughout the app. Import: `import timber.log.Timber`
-- **Theming**: Use `io.homeassistant.companion.android.common.compose.theme.HATheme` for new components (Material Design based). We have a design system in place for the whole Home Assistant project.
+- **Theming**: Use `io.altenems.companion.android.common.compose.theme.HATheme` for new components (Material Design based). We have a design system in place for the whole Home Assistant project.
     - The components using this Design System are prefixed with `HA*` like `HAButton`.
-    - Colors are injected through `io.homeassistant.companion.android.common.compose.theme.LocalHAColorScheme` using the tokens define in `io.homeassistant.companion.android.common.compose.theme.HAColorScheme`
+    - Colors are injected through `io.altenems.companion.android.common.compose.theme.LocalHAColorScheme` using the tokens define in `io.altenems.companion.android.common.compose.theme.HAColorScheme`
 - **FailFast** - Custom utility for offensive programming in debug builds (located in `:common`)
 
 
 ### App Source Structure
 
-Source code is in Kotlin under `src/main/kotlin/io/homeassistant/companion/android/`. Main feature areas include:
+Source code is in Kotlin under `src/main/kotlin/io/altenems/companion/android/`. Main feature areas include:
 
 - `assist/` - Voice assistant integration
 - `sensors/` - Background sensor collection
@@ -262,7 +262,7 @@ Timber.d("User logged in: userId=${if(BuildConfig.DEBUG) user.id else "redacted"
 
 ### Strict Mode
 
-- Strict Mode issues can be ignored using `io.homeassistant.companion.android.common.util.IgnoreViolationRules`.
+- Strict Mode issues can be ignored using `io.altenems.companion.android.common.util.IgnoreViolationRules`.
 
 ### Date/Clock
 
@@ -310,7 +310,7 @@ Use the `Clock` available from `Hilt`.
   @Config(application = HiltTestApplication::class)
   class MyTest {
   ```
-  Without the `@Config` override, Robolectric defaults to the manifest's `HomeAssistantApplication`, which enables StrictMode and FailFast, leaking process-wide state that can crash the test JVM.
+  Without the `@Config` override, Robolectric defaults to the manifest's `AltenEmsApplication`, which enables StrictMode and FailFast, leaking process-wide state that can crash the test JVM.
 - **Turbine**: Turbine is available in all Gradle modules and must be used for testing flows. Use `turbineScope` with `testIn` for multi-collector tests, and `awaitItem`/`awaitComplete`/`expectNoEvents` for assertions. Never use `CountDownLatch`, `Thread.sleep`, `verify(timeout = ...)`, or raw `launch`/`async` to synchronize on flow emissions. Note: flows wrapped with `shareIn` never complete — use `expectNoEvents()` + `cancelAndConsumeRemainingEvents()` instead of `awaitComplete()`.
 - **Test Location**: Tests should mirror source structure in `src/test/kotlin/` directory
 - **Test Naming**: Use GIVEN-WHEN-THEN structure with descriptive sentences:
@@ -397,7 +397,7 @@ fun NavGraphBuilder.featureNavGraph() {
   fun SettingsScreen(viewModel: SettingsViewModel) { /* ... */ }
   ```
 
-- **Preview functions**: Add `@Preview` for all major composables and uses `io.homeassistant.companion.android.common.compose.theme.HAThemeForPreview`
+- **Preview functions**: Add `@Preview` for all major composables and uses `io.altenems.companion.android.common.compose.theme.HAThemeForPreview`
   ```kotlin
   @Preview
   @Composable
@@ -411,8 +411,8 @@ fun NavGraphBuilder.featureNavGraph() {
   }
   ```
 
-- **Design System**: Always use `io.homeassistant.companion.android.common.compose.theme.HATheme` components (HAButton, HAText, etc.) instead of Material components directly
-- **Colors**: Access via `io.homeassistant.companion.android.common.compose.theme.LocalHAColorScheme.current` instead of hardcoded colors
+- **Design System**: Always use `io.altenems.companion.android.common.compose.theme.HATheme` components (HAButton, HAText, etc.) instead of Material components directly
+- **Colors**: Access via `io.altenems.companion.android.common.compose.theme.LocalHAColorScheme.current` instead of hardcoded colors
 - **Strings**: Use `stringResource(R.string.*)` - never hardcode displayed text
 
 ### PRs and Contributions
@@ -446,7 +446,7 @@ fun NavGraphBuilder.featureNavGraph() {
 
 ## Deep Linking
 
-The app supports `homeassistant://` URLs for navigation. See user documentation at https://companion.home-assistant.io/docs/integrations/url-handler/
+The app supports `altenems://` URLs for navigation. See user documentation at https://companion.home-assistant.io/docs/integrations/url-handler/
 
 ## Wear OS Communication
 
@@ -457,12 +457,12 @@ The Wear OS app uses the Messaging API to retrieve credentials from the mobile a
 - All new widgets **must** use Jetpack Glance for declarative widget development
 - Glance provides a Compose-like API for building Android widgets
 - Legacy widgets using RemoteViews exist but should not be used for new features
-- Widget code is located in `app/src/main/kotlin/io/homeassistant/companion/android/widgets/`
+- Widget code is located in `app/src/main/kotlin/io/altenems/companion/android/widgets/`
 - Widgets should follow the same state management patterns as screens (ViewModels, Repositories)
 
 ## Server Commands
 
-The Home Assistant server can send commands to the app through `io.homeassistant.companion.android.notifications.MessagingManager`. These commands enable server-side control of app functionality such as:
+The Home Assistant server can send commands to the app through `io.altenems.companion.android.notifications.MessagingManager`. These commands enable server-side control of app functionality such as:
 - Triggering notifications
 - Updating sensors
 - Controlling app behavior

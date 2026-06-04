@@ -1,4 +1,4 @@
-package io.homeassistant.companion.android.location
+package io.altenems.companion.android.location
 
 import android.content.Context
 import android.location.Location

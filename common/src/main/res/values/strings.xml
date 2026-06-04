@@ -1395,11 +1395,11 @@
     <string name="branding_icon_content_description">Alten branding icon</string>
     <string name="loading_content_description">Loading</string>
     <string name="searching_home_network">Searching on\nhome network</string>
-    <string name="server_discovery_no_server_info">Check that your Alten server is powered on and you\'re connected to the same network. You can enter the address manually if you know it.</string>
+    <string name="server_discovery_no_server_info">Check that your connection to internet. You can enter the address manually if you know it.</string>
     <string name="server_discovery_connect">Connect</string>
-    <string name="welcome_alten_title">Alten App</string>
-    <string name="welcome_details">Access your Alten server.</string>
-    <string name="welcome_connect_to_ha">Connect to my Alten server</string>
+    <string name="welcome_alten_title">AltenEMS App</string>
+    <string name="welcome_details">Access your AltenEMS dashboard.</string>
+    <string name="welcome_connect_to_ha">Connect to server</string>
     <string name="welcome_learn_more">Learn more</string>
     <string name="name_your_device_title">How would you like to name this device?</string>
     <string name="name_your_device_content">This is used to identify your device.</string>
@@ -1453,7 +1453,7 @@
     <string name="connection_error_unknown_error">There was an error loading Alten. Please review the connection settings and try again.</string>
     <string name="back">Back</string>
     <string name="notification_permission_dialog_title">Allow notifications?</string>
-    <string name="notification_permission_dialog_content">Enable notifications and get what\'s happening in your home, from detecting leaks to doors left open. You have full control over the notifications you receive and what they tell you.</string>
+    <string name="notification_permission_dialog_content">Enable notifications and get what\'s happening in your system.</string>
     <string name="notification_permission_dialog_allow">Allow notifications</string>
     <string name="notification_permission_dialog_deny">Do not allow</string>
     <string name="connection_check_title">Connectivity checks</string>
@@ -1465,7 +1465,7 @@
     <string name="connection_check_tls_not_applicable">Not required for HTTP</string>
     <string name="not_applicable_content_description">Not applicable</string>
     <string name="connection_check_server_success">Connection established</string>
-    <string name="connection_check_error_invalid_url">Invalid URL format</string>
+    <string name="connection_check_error_invalid_url">Invalid server URL format</string>
     <string name="connection_check_error_dns">DNS resolution failed</string>
     <string name="connection_check_error_port">Port not reachable</string>
     <string name="connection_check_error_tls">TLS certificate error</string>
@@ -1479,4 +1479,11 @@
     <string name="fail_to_navigate_to_uri">No app available to open %s</string>
     <string name="experimental">Experimental</string>
     <string name="learn_more">Learn more</string>
+    <string name="wireguard_pick_config">Pick Tunnel Config</string>
+    <string name="wireguard_change_config">Change Tunnel Config</string>
+    <string name="wireguard_valid_config">Valid config: %1$s</string>
+    <string name="wireguard_invalid_config">Invalid config: %1$s</string>
+    <string name="wireguard_validating">Validating…</string>
+    <string name="wireguard_saved_config">Saved config: %1$s</string>
+    <string name="wireguard_connect_vpn">Connect VPN</string>
 </resources>

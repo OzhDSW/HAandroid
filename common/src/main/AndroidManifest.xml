@@ -5,11 +5,13 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+
+
     <application>
         <receiver android:name=".sensors.SensorUpdateReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="io.homeassistant.companion.android.UPDATE_SENSORS" />
+                <action android:name="io.altenems.companion.android.UPDATE_SENSORS" />
             </intent-filter>
         </receiver>
 
@@ -18,5 +20,8 @@
             android:enabled="true"
             android:exported="false" />
     </application>
+
+
+
 
 </manifest>

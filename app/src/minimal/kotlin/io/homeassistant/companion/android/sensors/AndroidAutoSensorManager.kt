@@ -1,8 +1,8 @@
-package io.homeassistant.companion.android.sensors
+package io.altenems.companion.android.sensors
 
 import android.content.Context
-import io.homeassistant.companion.android.common.R as commonR
-import io.homeassistant.companion.android.common.sensors.SensorManager
+import io.altenems.companion.android.common.R as commonR
+import io.altenems.companion.android.common.sensors.SensorManager
 
 class AndroidAutoSensorManager : SensorManager {
 

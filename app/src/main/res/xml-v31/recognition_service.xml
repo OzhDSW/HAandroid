@@ -2,5 +2,5 @@
 <!-- Configuration for the RecognitionService referenced by the VoiceInteractionService -->
 <!-- Keep this tied to assistant integration only, not as a general speech recognizer option. -->
 <recognition-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:settingsActivity="io.homeassistant.companion.android.settings.SettingsActivity"
+    android:settingsActivity="io.altenems.companion.android.settings.SettingsActivity"
     android:selectableAsDefault="false" />

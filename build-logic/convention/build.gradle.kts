@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
-group = "io.homeassistant.companion.android.buildlogic"
+group = "io.altenems.companion.android.buildlogic"
 
 allprojects {
     apply(plugin = rootProject.libs.plugins.ktlint.get().pluginId)
@@ -54,23 +54,23 @@ tasks {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = libs.plugins.homeassistant.android.application.get().pluginId
+            id = libs.plugins.altenems.android.application.get().pluginId
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidApplicationDependencies") {
-            id = libs.plugins.homeassistant.android.dependencies.get().pluginId
+            id = libs.plugins.altenems.android.dependencies.get().pluginId
             implementationClass = "AndroidApplicationDependenciesConventionPlugin"
         }
         register("androidApplicationFullMinimalFlavor") {
-            id = libs.plugins.homeassistant.android.flavor.get().pluginId
+            id = libs.plugins.altenems.android.flavor.get().pluginId
             implementationClass = "AndroidFullMinimalFlavorConventionPlugin"
         }
         register("androidCommon") {
-            id = libs.plugins.homeassistant.android.common.get().pluginId
+            id = libs.plugins.altenems.android.common.get().pluginId
             implementationClass = "AndroidCommonConventionPlugin"
         }
         register("androidCompose") {
-            id = libs.plugins.homeassistant.android.compose.get().pluginId
+            id = libs.plugins.altenems.android.compose.get().pluginId
             implementationClass = "AndroidComposeConventionPlugin"
         }
     }

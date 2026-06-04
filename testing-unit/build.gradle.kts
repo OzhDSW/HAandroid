@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "io.homeassistant.companion.android.testing.unit"
+    namespace = "io.altenems.companion.android.testing.unit"
 
     compileSdk = libs.versions.androidSdk.compile.get().toInt()
 

@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.homeassistant.android.application)
+    alias(libs.plugins.altenems.android.application)
     alias(libs.plugins.google.services)
 }
 
@@ -8,7 +8,7 @@ android {
         minSdk = libs.versions.androidSdk.wear.min.get().toInt()
         targetSdk = libs.versions.androidSdk.wear.target.get().toInt()
 
-        testInstrumentationRunner = "io.homeassistant.companion.android.util.HAAndroidJUnitRunner"
+        testInstrumentationRunner = "io.altenems.companion.android.util.HAAndroidJUnitRunner"
 
         versionName = project.version.toString()
         // We add 1 because the app and wear versions need to have different version codes.

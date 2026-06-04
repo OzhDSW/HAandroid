@@ -1,4 +1,4 @@
-package io.homeassistant.companion.android.settings.wear.views
+package io.altenems.companion.android.settings.wear.views
 
 import android.content.Context
 import android.content.Intent
