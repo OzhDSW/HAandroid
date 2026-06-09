@@ -312,7 +312,8 @@ private fun StateOverlay(
             // No overlay for content state to show the underlying WebView
         }
 
-        is FrontendViewState.SecurityLevelRequired -> SecurityLevelOverlay(
+        is FrontendViewState.SecurityLevelRequired ->
+            SecurityLevelOverlay(
             viewModel = securityLevelViewModel,
             onSecurityLevelDone = onSecurityLevelDone,
             onHelpClick = onSecurityLevelHelpClick,

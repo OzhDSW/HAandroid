@@ -111,30 +111,30 @@ class SettingsFragment(
             }
         }
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                presenter.getSuggestionFlow().collect { suggestion ->
-                    findPreference<SettingsSuggestionPreference>("settings_suggestion")?.let {
-                        if (suggestion != null) {
-                            it.setTitle(suggestion.title)
-                            it.setSummary(suggestion.summary)
-                            it.setIcon(suggestion.icon)
-                            it.setOnPreferenceClickListener {
-                                when (suggestion.id) {
-                                    SettingsPresenter.SUGGESTION_ASSISTANT_APP -> updateAssistantApp()
-                                    SettingsPresenter.SUGGESTION_NOTIFICATION_PERMISSION -> openNotificationSettings()
-                                }
-                                return@setOnPreferenceClickListener true
-                            }
-                            it.setOnPreferenceCancelListener {
-                                presenter.cancelSuggestion(requireContext(), suggestion.id)
-                            }
-                        }
-                        it.isVisible = suggestion != null
-                    }
-                }
-            }
-        }
+//        lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+//                presenter.getSuggestionFlow().collect { suggestion ->
+//                    findPreference<SettingsSuggestionPreference>("settings_suggestion")?.let {
+//                        if (suggestion != null) {
+//                            it.setTitle(suggestion.title)
+//                            it.setSummary(suggestion.summary)
+//                            it.setIcon(suggestion.icon)
+//                            it.setOnPreferenceClickListener {
+//                                when (suggestion.id) {
+//                                    SettingsPresenter.SUGGESTION_ASSISTANT_APP -> updateAssistantApp()
+//                                    SettingsPresenter.SUGGESTION_NOTIFICATION_PERMISSION -> openNotificationSettings()
+//                                }
+//                                return@setOnPreferenceClickListener true
+//                            }
+//                            it.setOnPreferenceCancelListener {
+//                                presenter.cancelSuggestion(requireContext(), suggestion.id)
+//                            }
+//                        }
+//                        it.isVisible = suggestion != null
+//                    }
+//                }
+//            }
+//        }
 
         findPreference<Preference>("server_add")?.let {
             it.setOnPreferenceClickListener {
@@ -332,18 +332,18 @@ class SettingsFragment(
             }
         }
 
-        findPreference<Preference>("changelog_github")?.let {
-            val link = if (BuildConfig.VERSION_NAME.startsWith("LOCAL")) {
-                "https://github.com/home-assistant/android/releases"
-            } else {
-                "https://github.com/home-assistant/android/releases/tag/${BuildConfig.VERSION_NAME.replace(
-                    "-full",
-                    "",
-                ).replace("-minimal", "")}"
-            }
-            it.summary = link
-            it.intent = Intent(Intent.ACTION_VIEW, link.toUri())
-        }
+//        findPreference<Preference>("changelog_github")?.let {
+//            val link = if (BuildConfig.VERSION_NAME.startsWith("LOCAL")) {
+//                "https://github.com/home-assistant/android/releases"
+//            } else {
+//                "https://github.com/home-assistant/android/releases/tag/${BuildConfig.VERSION_NAME.replace(
+//                    "-full",
+//                    "",
+//                ).replace("-minimal", "")}"
+//            }
+//            it.summary = link
+//            it.intent = Intent(Intent.ACTION_VIEW, link.toUri())
+//        }
 
         findPreference<Preference>("changelog_prompt")?.setOnPreferenceClickListener {
             lifecycleScope.launch {
@@ -385,10 +385,10 @@ class SettingsFragment(
             }
         }
 
-        findPreference<Preference>("privacy")?.let {
-            it.summary = "https://www.home-assistant.io/privacy/"
-            it.intent = Intent(Intent.ACTION_VIEW, it.summary.toString().toUri())
-        }
+//        findPreference<Preference>("privacy")?.let {
+//            it.summary = "https://www.home-assistant.io/privacy/"
+//            it.intent = Intent(Intent.ACTION_VIEW, it.summary.toString().toUri())
+//        }
 
         findPreference<Preference>("developer")?.setOnPreferenceClickListener {
             parentFragmentManager.commit {

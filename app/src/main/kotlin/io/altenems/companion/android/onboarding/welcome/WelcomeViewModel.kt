@@ -14,7 +14,6 @@ import io.altenems.companion.android.common.data.wireguard.WireGuardConfig
 import io.altenems.companion.android.common.data.wireguard.WireGuardRepository
 import io.altenems.companion.android.util.getActivity
 import io.altenems.companion.android.wireguard.WireGuardManager
-import io.altenems.companion.android.wireguard.WireGuardVpnService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -48,32 +47,65 @@ class WelcomeViewModel @Inject constructor(
 
     fun onFilePicked(context: Context, uri: Uri) {
         viewModelScope.launch {
-            _validationStatus.value = ValidationStatus.Validating
             try {
                 val contentResolver = context.contentResolver
                 val fileName = getFileName(context, uri) ?: "wg_tunnel.conf"
                 val configText = contentResolver.openInputStream(uri)?.bufferedReader()?.use { it.readText() }
 
-                if (configText != null) {
-                    // Validate using WireGuard's Config.parse
-                    Config.parse(configText.byteInputStream().bufferedReader())
-
-                    wireGuardRepository.updateConfig(
-                        WireGuardConfig(
-                            fileName = fileName,
-                            configText = configText,
-                            autoConnect = true
-                        )
+                wireGuardRepository.updateConfig(
+                    WireGuardConfig(
+                        fileName = fileName,
+                        configText = configText,
+                        autoConnect = true
                     )
-                    _validationStatus.value = ValidationStatus.Valid(fileName)
-                } else {
-                    _validationStatus.value = ValidationStatus.Invalid("Could not read file")
-                }
+                )
+                updateValidationStatus(fileName,configText)
+
             } catch (e: Exception) {
                 Timber.e(e, "Failed to validate WireGuard config")
                 _validationStatus.value = ValidationStatus.Invalid(e.message ?: "Unknown error")
             }
         }
+    }
+    fun onFilePicked(context: Context, uri: Uri,activity:Activity?, autoconnect: Boolean = true) {
+        viewModelScope.launch {
+            try {
+                val contentResolver = context.contentResolver
+                val fileName = getFileName(context, uri) ?: "wg_tunnel.conf"
+                val configText = contentResolver.openInputStream(uri)?.bufferedReader()?.use { it.readText() }
+                val isNewConfig = wireGuardConfig.value.configText != configText
+                wireGuardRepository.updateConfig(
+                    WireGuardConfig(
+                        fileName = fileName,
+                        configText = configText,
+                        autoConnect = true
+                    )
+                )
+                updateValidationStatus(fileName,configText)
+                if (activity!= null && _validationStatus.value is ValidationStatus.Valid &&
+                    autoconnect && isNewConfig)
+                    connect(activity)
+
+            } catch (e: Exception) {
+                Timber.e(e, "Failed to validate WireGuard config")
+                _validationStatus.value = ValidationStatus.Invalid(e.message ?: "Unknown error")
+            }
+        }
+    }
+    internal fun updateValidationStatus(fileName: String?, configText:String? ){
+        _validationStatus.value = ValidationStatus.Validating
+        if (configText == null){
+            _validationStatus.value = ValidationStatus.Invalid("Could not read file")
+            return
+        }
+            try {
+                val config = Config.parse(configText.byteInputStream().bufferedReader())
+                _validationStatus.value = ValidationStatus.Valid(fileName!!)
+            }catch (e: Exception) {
+                Timber.e(e, "Failed to validate WireGuard config")
+                _validationStatus.value = ValidationStatus.Invalid(e.message ?: "Unknown error")
+            }
+
     }
     fun onAutoConnectClick(context: Context){
         if (_validationStatus.value  !is ValidationStatus.Valid) return;

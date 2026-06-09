@@ -19,6 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -71,26 +72,31 @@ fun LocationForSecureConnectionScreen(
     onCloseClick: (() -> Unit)? = null,
     isStandaloneScreen: Boolean = false,
 ) {
-    val initialAllowInsecureConnection by viewModel.allowInsecureConnection.collectAsState(null)
+    val initialAllowInsecureConnection by viewModel.allowInsecureConnection.collectAsState(true)
     val hasPlainTextUrl by viewModel.hasPlainTextUrl.collectAsState(false)
     val coroutineScope = rememberCoroutineScope()
-
-    LocationForSecureConnectionScreen(
-        initialAllowInsecureConnection = initialAllowInsecureConnection,
-        hasPlainTextUrl = hasPlainTextUrl,
-        onBackClick = onBackClick,
-        onCloseClick = onCloseClick,
-        isStandaloneScreen = isStandaloneScreen,
-        onAllowInsecureConnection = { allowInsecureConnection ->
-            coroutineScope.launch {
-                viewModel.allowInsecureConnection(allowInsecureConnection)
-                onGoToNextScreen(allowInsecureConnection)
-            }
-        },
-        onHelpClick = onHelpClick,
-        onShowSnackbar = onShowSnackbar,
-        modifier = modifier,
-    )
+    LaunchedEffect(true) {
+        coroutineScope.launch {
+            viewModel.allowInsecureConnection(true)
+            onGoToNextScreen(true)
+        }
+    }
+//    LocationForSecureConnectionScreen(
+//        initialAllowInsecureConnection = initialAllowInsecureConnection,
+//        hasPlainTextUrl = hasPlainTextUrl,
+//        onBackClick = onBackClick,
+//        onCloseClick = onCloseClick,
+//        isStandaloneScreen = isStandaloneScreen,
+//        onAllowInsecureConnection = { allowInsecureConnection ->
+//            coroutineScope.launch {
+//                viewModel.allowInsecureConnection(allowInsecureConnection)
+//                onGoToNextScreen(allowInsecureConnection)
+//            }
+//        },
+//        onHelpClick = onHelpClick,
+//        onShowSnackbar = onShowSnackbar,
+//        modifier = modifier,
+//    )
 }
 
 @Composable
@@ -163,7 +169,7 @@ private fun LocationForSecureConnectionContent(
         val permissions = rememberLocationPermission(
             onPermissionResult = { permissionGranted ->
                 if (permissionGranted) {
-                    onAllowInsecureConnection(false)
+                    onAllowInsecureConnection(true)
                 } else {
                     coroutineScope.launch {
                         onShowSnackbar(errorText, null)

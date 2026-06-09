@@ -26,7 +26,7 @@ private data class ManifestResponse(val name: String? = null) {
     fun isaltenems(): Boolean = name == HOME_ASSISTANT_NAME
 
     companion object {
-        private const val HOME_ASSISTANT_NAME = "Home Assistant"
+        private const val HOME_ASSISTANT_NAME = "Alten EMS"
     }
 }
 

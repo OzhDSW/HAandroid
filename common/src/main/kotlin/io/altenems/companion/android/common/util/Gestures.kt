@@ -19,7 +19,7 @@ enum class GestureAction(@StringRes val description: Int, val category: GestureA
     SERVER_LIST(R.string.gestures_action_server_list, GestureActionCategory.SERVERS),
     SERVER_NEXT(R.string.gestures_action_server_next, GestureActionCategory.SERVERS),
     SERVER_PREVIOUS(R.string.gestures_action_server_previous, GestureActionCategory.SERVERS),
-    OPEN_APP_SETTINGS(R.string.gestures_action_open_app_settings, GestureActionCategory.APP),
+//    OPEN_APP_SETTINGS(R.string.gestures_action_open_app_settings, GestureActionCategory.APP),
     OPEN_APP_DEVELOPER(R.string.gestures_action_open_app_developer, GestureActionCategory.APP),
 }
 

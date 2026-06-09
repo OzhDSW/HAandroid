@@ -65,7 +65,7 @@ class ManageShortcutsViewModel @Inject constructor(
     val canPinShortcuts =
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && ShortcutManagerCompat.isRequestPinShortcutSupported(app)
     var pinnedShortcuts = ShortcutManagerCompat.getShortcuts(app, ShortcutManagerCompat.FLAG_MATCH_PINNED)
-        .filter { !it.id.startsWith(AssistShortcutActivity.SHORTCUT_PREFIX) }
+
         .toMutableList()
         private set
     var dynamicShortcuts = mutableListOf<ShortcutInfoCompat>()
@@ -330,7 +330,7 @@ class ManageShortcutsViewModel @Inject constructor(
         pinnedShortcuts.clear()
         pinnedShortcuts.addAll(
             ShortcutManagerCompat.getShortcuts(app, ShortcutManagerCompat.FLAG_MATCH_PINNED)
-                .filter { !it.id.startsWith(AssistShortcutActivity.SHORTCUT_PREFIX) },
+                ,
         )
     }
 }

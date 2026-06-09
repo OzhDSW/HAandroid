@@ -1,6 +1,7 @@
 package io.altenems.companion.android.wireguard
 
 import android.app.Activity
+import android.app.Service
 import android.content.Context
 import android.net.Uri
 import android.util.Log

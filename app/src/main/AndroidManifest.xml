@@ -110,7 +110,8 @@
             android:name="com.wireguard.android.backend.GoBackend$VpnService"
             android:exported="true"
             android:permission="android.permission.BIND_VPN_SERVICE"
-            tools:replace="android:exported">
+            tools:replace="android:exported"
+            android:stopWithTask="true" >
             <intent-filter>
                 <action android:name="android.net.VpnService" />
             </intent-filter>
@@ -199,165 +200,165 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".widgets.button.ButtonWidget" android:label="@string/widget_button_image_description"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="io.altenems.companion.android.widgets.ButtonWidget.CALL_SERVICE" />
-                <action android:name="io.altenems.companion.android.widgets.ButtonWidget.CALL_SERVICE_AUTH" />
-            </intent-filter>
+<!--        <receiver android:name=".widgets.button.ButtonWidget" android:label="@string/widget_button_image_description"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.ButtonWidget.CALL_SERVICE" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.ButtonWidget.CALL_SERVICE_AUTH" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/button_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/button_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver android:name=".widgets.camera.CameraWidget" android:label="@string/widget_camera_description"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="io.altenems.companion.android.widgets.camera.CameraWidget.UPDATE_IMAGE" />
-            </intent-filter>
+<!--        <receiver android:name=".widgets.camera.CameraWidget" android:label="@string/widget_camera_description"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.camera.CameraWidget.UPDATE_IMAGE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/camera_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/camera_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver android:name=".widgets.entity.EntityWidget" android:label="@string/widget_static_image_description"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver android:name=".widgets.entity.EntityWidget" android:label="@string/widget_static_image_description"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/entity_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/entity_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver android:name=".widgets.todo.TodoWidget" android:label="@string/widget_todo_label"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver android:name=".widgets.todo.TodoWidget" android:label="@string/widget_todo_label"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/todo_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/todo_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver android:name=".widgets.mediaplayer.MediaPlayerControlsWidget" android:label="@string/widget_media_player_description"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.UPDATE_MEDIA_IMAGE" />
-                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PREV_TRACK" />
-                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_REWIND" />
-                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PLAYPAUSE" />
-                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_FASTFORWARD" />
-                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_NEXT_TRACK" />
-            </intent-filter>
+<!--        <receiver android:name=".widgets.mediaplayer.MediaPlayerControlsWidget" android:label="@string/widget_media_player_description"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.UPDATE_MEDIA_IMAGE" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PREV_TRACK" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_REWIND" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_PLAYPAUSE" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_FASTFORWARD" />-->
+<!--                <action android:name="io.altenems.companion.android.widgets.media_player_controls.MediaPlayerControlsWidget.CALL_NEXT_TRACK" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/media_player_control_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/media_player_control_widget_info" />-->
+<!--        </receiver>-->
 
-        <receiver android:name=".widgets.template.TemplateWidget" android:label="@string/template_widget"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-                <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
-                <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
-                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
-                <action android:name="io.altenems.companion.android.background.REQUEST_SENSORS_UPDATE" />
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+<!--        <receiver android:name=".widgets.template.TemplateWidget" android:label="@string/template_widget"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.BOOT_COMPLETED" />-->
+<!--                <action android:name="android.intent.action.QUICKBOOT_POWERON" />-->
+<!--                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />-->
+<!--                <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />-->
+<!--                <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />-->
+<!--                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />-->
+<!--                <action android:name="io.altenems.companion.android.background.REQUEST_SENSORS_UPDATE" />-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/template_widget_info" />
-        </receiver>
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/template_widget_info" />-->
+<!--        </receiver>-->
 
-        <activity android:name=".widgets.button.ButtonWidgetConfigureActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".widgets.common.WidgetAuthenticationActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true"
-            android:theme="@style/Theme.Transparent">
-        </activity>
-        <activity android:name=".widgets.camera.CameraWidgetConfigureActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".widgets.entity.EntityWidgetConfigureActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".widgets.todo.TodoWidgetConfigureActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".widgets.mediaplayer.MediaPlayerControlsWidgetConfigureActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".widgets.template.TemplateWidgetConfigureActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
+<!--        <activity android:name=".widgets.button.ButtonWidgetConfigureActivity"-->
+<!--            android:configChanges="orientation|screenSize"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name=".widgets.common.WidgetAuthenticationActivity"-->
+<!--            android:configChanges="orientation|screenSize"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/Theme.Transparent">-->
+<!--        </activity>-->
+<!--        <activity android:name=".widgets.camera.CameraWidgetConfigureActivity"-->
+<!--            android:configChanges="orientation|screenSize"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name=".widgets.entity.EntityWidgetConfigureActivity"-->
+<!--            android:configChanges="orientation|screenSize"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name=".widgets.todo.TodoWidgetConfigureActivity"-->
+<!--            android:configChanges="orientation|screenSize"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name=".widgets.mediaplayer.MediaPlayerControlsWidgetConfigureActivity"-->
+<!--            android:configChanges="orientation|screenSize"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name=".widgets.template.TemplateWidgetConfigureActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
-        <service android:name=".sensors.NotificationSensorManager"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService"/>
-            </intent-filter>
-        </service>
+<!--        <service android:name=".sensors.NotificationSensorManager"-->
+<!--            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.service.notification.NotificationListenerService"/>-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
-        <service android:name=".controls.HaControlsProviderService"
-            android:permission="android.permission.BIND_CONTROLS"
-            android:exported="true">
-            <meta-data
-                android:name="android.service.controls.META_DATA_PANEL_ACTIVITY"
-                android:value="${applicationId}/io.altenems.companion.android.controls.HaControlsPanelActivity" />
-            <intent-filter>
-                <action android:name="android.service.controls.ControlsProviderService"/>
-            </intent-filter>
-        </service>
+<!--        <service android:name=".controls.HaControlsProviderService"-->
+<!--            android:permission="android.permission.BIND_CONTROLS"-->
+<!--            android:exported="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.service.controls.META_DATA_PANEL_ACTIVITY"-->
+<!--                android:value="${applicationId}/io.altenems.companion.android.controls.HaControlsPanelActivity" />-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.service.controls.ControlsProviderService"/>-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
-        <activity android:name=".controls.HaControlsPanelActivity"
-            android:permission="android.permission.BIND_CONTROLS"
-            android:exported="true"
-            android:resizeableActivity="true"
-            android:taskAffinity="io.altenems.companion.android.controls"
-            android:enabled="false" />
+<!--        <activity android:name=".controls.HaControlsPanelActivity"-->
+<!--            android:permission="android.permission.BIND_CONTROLS"-->
+<!--            android:exported="true"-->
+<!--            android:resizeableActivity="true"-->
+<!--            android:taskAffinity="io.altenems.companion.android.controls"-->
+<!--            android:enabled="false" />-->
 
-        <receiver
-            android:name=".sensors.LocationSensorManager"
-            android:enabled="true"
-            android:exported="false" />
+<!--        <receiver-->
+<!--            android:name=".sensors.LocationSensorManager"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="false" />-->
 
         <!--Exported proxy for the public REQUEST_ACCURATE_UPDATE action, used by external
         automation tools such as Tasker (see https://github.com/home-assistant/android/pull/5509).
@@ -569,16 +570,16 @@
             </intent-filter>
         </activity-alias>
 
-        <activity android:name=".widgets.assist.AssistShortcutActivity"
-            android:label="@string/assist_shortcut"
-            android:icon="@mipmap/ic_assist_launcher"
-            android:exported="true"
-            android:excludeFromRecents="true"
-            android:theme="@style/Theme.altenems.Config">
-            <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
-            </intent-filter>
-        </activity>
+<!--        <activity android:name=".widgets.assist.AssistShortcutActivity"-->
+<!--            android:label="@string/assist_shortcut"-->
+<!--            android:icon="@mipmap/ic_assist_launcher"-->
+<!--            android:exported="true"-->
+<!--            android:excludeFromRecents="true"-->
+<!--            android:theme="@style/Theme.altenems.Config">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.CREATE_SHORTCUT"/>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
         <!-- Voice Interaction Service for being the system's default assistant -->
         <service
@@ -594,23 +595,23 @@
             </intent-filter>
         </service>
 
-        <service
-            android:name=".assist.service.AssistVoiceInteractionSessionService"
-            android:exported="true"
-            android:permission="android.permission.BIND_VOICE_INTERACTION" />
+<!--        <service-->
+<!--            android:name=".assist.service.AssistVoiceInteractionSessionService"-->
+<!--            android:exported="true"-->
+<!--            android:permission="android.permission.BIND_VOICE_INTERACTION" />-->
 
-        <service
-            android:name=".assist.service.AssistRecognitionService"
-            android:exported="true"
-            android:permission="android.permission.BIND_VOICE_INTERACTION">
-            <intent-filter>
-                <action android:name="android.speech.RecognitionService" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data
-                android:name="android.speech"
-                android:resource="@xml/recognition_service" />
-        </service>
+<!--        <service-->
+<!--            android:name=".assist.service.AssistRecognitionService"-->
+<!--            android:exported="true"-->
+<!--            android:permission="android.permission.BIND_VOICE_INTERACTION">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.speech.RecognitionService" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+<!--            <meta-data-->
+<!--                android:name="android.speech"-->
+<!--                android:resource="@xml/recognition_service" />-->
+<!--        </service>-->
 
         <provider
             android:name="androidx.core.content.FileProvider"

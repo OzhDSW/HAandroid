@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -22,20 +23,27 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import androidx.glance.layout.Row
+import androidx.glance.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.altenems.companion.android.R
 import io.altenems.companion.android.common.R as commonR
+import io.altenems.companion.android.common.compose.composable.ButtonVariant
 import io.altenems.companion.android.common.compose.composable.HAAccentButton
+import io.altenems.companion.android.common.compose.composable.HAIconButton
 import io.altenems.companion.android.common.compose.composable.HAPlainButton
 import io.altenems.companion.android.common.compose.theme.HADimens
 import io.altenems.companion.android.common.compose.theme.HATextStyle
@@ -44,6 +52,7 @@ import io.altenems.companion.android.common.compose.theme.MaxButtonWidth
 import io.altenems.companion.android.common.data.wireguard.WireGuardConfig
 import io.altenems.companion.android.util.compose.HAPreviews
 import io.altenems.companion.android.wireguard.WireGuardManager
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 private val ICON_SIZE = 120.dp
@@ -62,13 +71,17 @@ internal fun WelcomeScreen(
     val activity = LocalActivity.current
     val vpnState by viewModel.isVpnConnected.collectAsStateWithLifecycle()
 
+    LaunchedEffect(wireGuardConfig.fileName) {
+        if (wireGuardConfig.fileName != null && validationStatus is WelcomeViewModel.ValidationStatus.Idle)
+            viewModel.updateValidationStatus(wireGuardConfig.fileName,wireGuardConfig.configText)
+    }
     WelcomeScreenContent(
         wireGuardConfig = wireGuardConfig,
         validationStatus = validationStatus,
         isVpnConnected =  vpnState,
         onConnectClick = onConnectClick,
         onLearnMoreClick = onLearnMoreClick,
-        onFilePicked = { uri -> viewModel.onFilePicked(context, uri) },
+        onFilePicked = { uri -> viewModel.onFilePicked(context, uri,activity, true) },
         onConnectVpnClick = { activity?.let { viewModel.connect(it) } },
         modifier = modifier,
     )
@@ -120,8 +133,7 @@ private fun WelcomeScreenContent(
             onConnectVpnClick = onConnectVpnClick,
             isVpnConnected = isVpnConnected,
         )
-
-        BottomButtons(onConnectClick = onConnectClick, onLearnMoreClick = onLearnMoreClick)
+        BottomButtons(onConnectClick = onConnectClick, onLearnMoreClick = onLearnMoreClick, validationStatus)
     }
 }
 
@@ -133,51 +145,52 @@ private fun WireGuardSection(
     onConnectVpnClick: () -> Unit,
     isVpnConnected: Boolean
 ) {
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(HADimens.SPACE2),
     ) {
-        HAPlainButton(
-            text = stringResource(
-                if (config.fileName != null) commonR.string.wireguard_change_config
-                else commonR.string.wireguard_pick_config
-            ),
-            onClick = onPickFileClick,
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        when (validationStatus) {
-            is WelcomeViewModel.ValidationStatus.Valid -> {
+        androidx.compose.foundation.layout.Row(modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(HADimens.SPACE2, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            var confText = config.fileName
+            when (validationStatus) {
+                is WelcomeViewModel.ValidationStatus.Valid -> {
+                    confText = stringResource(commonR.string.wireguard_valid_config, validationStatus.fileName)
+                }
+                is WelcomeViewModel.ValidationStatus.Invalid -> {
+                    confText = stringResource(commonR.string.wireguard_invalid_config, validationStatus.error)
+                }
+                WelcomeViewModel.ValidationStatus.Validating -> {
+                    confText = stringResource(commonR.string.wireguard_validating)
+                }
+                WelcomeViewModel.ValidationStatus.Idle -> {}
+            }
+            if (confText != null){
                 Text(
-                    text = stringResource(commonR.string.wireguard_valid_config, validationStatus.fileName),
+                    text = confText,
                     style = HATextStyle.BodyMedium,
                     color = MaterialTheme.colorScheme.primary,
                 )
-                onConnectVpnClick()
-            }
-            is WelcomeViewModel.ValidationStatus.Invalid -> {
-                Text(
-                    text = stringResource(commonR.string.wireguard_invalid_config, validationStatus.error),
-                    style = HATextStyle.BodyMedium,
-                    color = MaterialTheme.colorScheme.error,
+                HAIconButton(
+                    icon = ImageVector.vectorResource(commonR.drawable.ic_edit),
+                    onClick = onPickFileClick,
+                    contentDescription = "Change VPN config",
+                    modifier = Modifier.size(32.dp),
+                    variant = ButtonVariant.WARNING,
                 )
-            }
-            WelcomeViewModel.ValidationStatus.Validating -> {
-                Text(
-                    text = stringResource(commonR.string.wireguard_validating),
-                    style = HATextStyle.BodyMedium,
-                )
-            }
-            WelcomeViewModel.ValidationStatus.Idle -> {
-                if (config.fileName != null) {
-                    Text(
-                        text = stringResource(commonR.string.wireguard_saved_config, config.fileName!!),
-                        style = HATextStyle.BodyMedium,
-                    )
-                }
-            }
+            }else
+            HAPlainButton(
+                text = stringResource(commonR.string.wireguard_pick_config),
+                onClick = onPickFileClick,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
+
+
+
 
 //        if (config.configText != null) {
 //            HAAccentButton(
@@ -207,7 +220,11 @@ private fun ColumnScope.WelcomeText() {
 }
 
 @Composable
-private fun BottomButtons(onConnectClick: () -> Unit, onLearnMoreClick: suspend () -> Unit) {
+private fun BottomButtons(
+    onConnectClick: () -> Unit,
+    onLearnMoreClick: suspend () -> Unit,
+    validationStatus: WelcomeViewModel.ValidationStatus
+) {
     val coroutineScope = rememberCoroutineScope()
 
     Column(
@@ -219,6 +236,7 @@ private fun BottomButtons(onConnectClick: () -> Unit, onLearnMoreClick: suspend 
             text = stringResource(commonR.string.welcome_connect_to_ha),
             onClick = onConnectClick,
             modifier = Modifier.fillMaxWidth(),
+            enabled = validationStatus !is WelcomeViewModel.ValidationStatus.Invalid
         )
 
         HAPlainButton(
@@ -238,10 +256,13 @@ private fun BottomButtons(onConnectClick: () -> Unit, onLearnMoreClick: suspend 
 @HAPreviews
 @Composable
 private fun WelcomeScreenPreview() {
+    val config = WireGuardConfig(fileName = "programmer.conf")
+    //val config =  WireGuardConfig()
+    val status = if (config.fileName != null ) WelcomeViewModel.ValidationStatus.Valid(config.fileName!!) else WelcomeViewModel.ValidationStatus.Idle
     HAThemeForPreview {
         WelcomeScreenContent(
-            wireGuardConfig = WireGuardConfig(),
-            validationStatus = WelcomeViewModel.ValidationStatus.Idle,
+            wireGuardConfig = config,
+            validationStatus = status,
             isVpnConnected = false,
             onConnectClick = {},
             onLearnMoreClick = {},

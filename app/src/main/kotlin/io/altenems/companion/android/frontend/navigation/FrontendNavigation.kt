@@ -88,14 +88,14 @@ internal fun NavGraphBuilder.frontendScreen(
                 onShowSnackbar = onShowSnackbar,
                 onNavigateToSettings = onNavigateToSettings,
                 onNavigateToAssist = { serverId, pipelineId, startListening ->
-                    navController.context.startActivity(
-                        AssistActivity.newInstance(
-                            context = navController.context,
-                            serverId = serverId,
-                            pipelineId = pipelineId,
-                            startListening = startListening,
-                        ),
-                    )
+//                    navController.context.startActivity(
+//                        AssistActivity.newInstance(
+//                            context = navController.context,
+//                            serverId = serverId,
+//                            pipelineId = pipelineId,
+//                            startListening = startListening,
+//                        ),
+//                    )
                 },
                 onOpenExternalLink = onOpenExternalLink,
                 onShowServerSwitcher = { onShowServerSwitcher(viewModel::switchServer) },

@@ -75,7 +75,7 @@ class FrontendGestureHandler @Inject constructor(
                     startListening = true,
                 ),
             )
-            GestureAction.OPEN_APP_SETTINGS -> GestureResult.Navigate(FrontendEvent.NavigateToSettings)
+//            GestureAction.OPEN_APP_SETTINGS -> GestureResult.Navigate(FrontendEvent.NavigateToSettings)
             GestureAction.OPEN_APP_DEVELOPER -> GestureResult.Navigate(
                 FrontendEvent.NavigateToDeveloperSettings,
             )

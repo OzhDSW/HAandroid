@@ -1086,29 +1086,29 @@ class WebViewActivity :
                 }
             }
 
-            "assist/show" -> {
-                val payload = json["payload"]?.jsonObjectOrNull()
-                startActivity(
-                    AssistActivity.newInstance(
-                        this@WebViewActivity,
-                        serverId = presenter.getActiveServer(),
-                        pipelineId = payload?.getStringOrNull("pipeline_id"),
-                        startListening = payload?.getBooleanOrNull("start_listening") ?: true,
-                    ),
-                )
-            }
+//            "assist/show" -> {
+//                val payload = json["payload"]?.jsonObjectOrNull()
+//                startActivity(
+//                    AssistActivity.newInstance(
+//                        this@WebViewActivity,
+//                        serverId = presenter.getActiveServer(),
+//                        pipelineId = payload?.getStringOrNull("pipeline_id"),
+//                        startListening = payload?.getBooleanOrNull("start_listening") ?: true,
+//                    ),
+//                )
+//            }
 
-            "assist/settings" -> startActivity(
-                SettingsActivity.newInstance(
-                    this@WebViewActivity,
-                    SettingsActivity.Deeplink.AssistSettings,
-                ),
-            )
+//            "assist/settings" -> startActivity(
+//                SettingsActivity.newInstance(
+//                    this@WebViewActivity,
+//                    SettingsActivity.Deeplink.AssistSettings,
+//                ),
+//            )
 
-            "config_screen/show" ->
-                startActivity(
-                    SettingsActivity.newInstance(this@WebViewActivity),
-                )
+//            "config_screen/show" ->
+//                startActivity(
+//                    SettingsActivity.newInstance(this@WebViewActivity),
+//                )
 
             "tag/write" ->
                 writeNfcTag.launch(
@@ -1263,12 +1263,13 @@ class WebViewActivity :
 
                 GestureAction.SHOW_SIDEBAR -> sendExternalBusMessage(ShowSidebar)
 
-                GestureAction.OPEN_ASSIST -> startActivity(
-                    AssistActivity.newInstance(
-                        this@WebViewActivity,
-                        serverId = presenter.getActiveServer(),
-                    ),
-                )
+                GestureAction.OPEN_ASSIST ->{}
+//                startActivity(
+//                    AssistActivity.newInstance(
+//                        this@WebViewActivity,
+//                        serverId = presenter.getActiveServer(),
+//                    ),
+//                )
 
                 GestureAction.NAVIGATE_FORWARD -> {
                     if (webView.canGoForward()) webView.goForward()
@@ -1306,7 +1307,7 @@ class WebViewActivity :
 
                 GestureAction.SERVER_PREVIOUS -> presenter.previousServer(lifecycle)
 
-                GestureAction.OPEN_APP_SETTINGS -> startActivity(SettingsActivity.newInstance(this@WebViewActivity))
+                //GestureAction.OPEN_APP_SETTINGS -> {} // startActivity(SettingsActivity.newInstance(this@WebViewActivity))
 
                 GestureAction.OPEN_APP_DEVELOPER -> startActivity(
                     SettingsActivity.newInstance(
@@ -1881,9 +1882,9 @@ class WebViewActivity :
                 } else if (error.primaryError == SslError.SSL_UNTRUSTED) {
                     alert.setMessage(commonR.string.webview_error_SSL_UNTRUSTED)
                 }
-                alert.setPositiveButton(commonR.string.settings) { _, _ ->
-                    startActivity(SettingsActivity.newInstance(this@WebViewActivity))
-                }
+//                alert.setPositiveButton(commonR.string.settings) { _, _ ->
+//                    startActivity(SettingsActivity.newInstance(this@WebViewActivity))
+//                }
                 alert.setNeutralButton(commonR.string.exit) { _, _ ->
                     finishAffinity()
                 }
@@ -1900,9 +1901,9 @@ class WebViewActivity :
                 }
             } else {
                 alert.setMessage(commonR.string.webview_error)
-                alert.setPositiveButton(commonR.string.settings) { _, _ ->
-                    startActivity(SettingsActivity.newInstance(this@WebViewActivity))
-                }
+//                alert.setPositiveButton(commonR.string.settings) { _, _ ->
+//                    startActivity(SettingsActivity.newInstance(this@WebViewActivity))
+//                }
                 val activeServerId = presenter.getActiveServer()
                 val isInternal = serverManager.connectionStateProvider(activeServerId).isInternal()
                 val buttonRefreshesInternal = failedConnection == "external" && isInternal

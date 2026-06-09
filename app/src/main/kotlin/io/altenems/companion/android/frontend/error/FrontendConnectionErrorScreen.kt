@@ -221,7 +221,7 @@ private fun FrontendErrorContent(
 
         val displayUrl = url?.takeUnless { it == BLANK_URL }
 
-        UrlInfo(displayUrl, onOpenExternalLink = onOpenExternalLink)
+//        UrlInfo(displayUrl, onOpenExternalLink = onOpenExternalLink)
 
         ErrorDetails(
             errorDescription = errorDescription,
@@ -232,7 +232,7 @@ private fun FrontendErrorContent(
             onRetryConnectivityCheck = onRetryConnectivityCheck,
         )
 
-        GetMoreHelp(onOpenExternalLink = onOpenExternalLink)
+//        GetMoreHelp(onOpenExternalLink = onOpenExternalLink)
 
         Spacer(modifier = Modifier.weight(1f))
         actions()

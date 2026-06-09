@@ -15,7 +15,7 @@ import io.altenems.companion.android.assist.AssistActivity
 import io.altenems.companion.android.util.compose.altenemsAppTheme
 import java.util.UUID
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class AssistShortcutActivity : BaseActivity() {
 
     companion object {
