@@ -1,5 +1,6 @@
 package io.altenems.companion.android.launch
 
+import android.app.Activity
 import android.app.PictureInPictureParams
 import android.content.ComponentName
 import android.content.Context
@@ -178,7 +179,6 @@ class LaunchActivity : AppCompatActivity() {
         splashScreen.setKeepOnScreenCondition {
             viewModel.shouldShowSplashScreen()
         }
-
         enableEdgeToEdgeCompat()
 
         setContent {

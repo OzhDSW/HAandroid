@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright (C) 2026 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="395.71"
+    android:viewportHeight="412.39">
+  <group android:scaleX="0.5629377"
+      android:scaleY="0.58666664"
+      android:translateX="86.47497"
+      android:translateY="85.227264">
+    <path
+        android:pathData="m127.81,46.61S14.87,88.41 0.3,206.63c-6.85,117.45 105.85,218.09 223.87,204.53 -24.35,-7.14 -60.28,-13.26 -81.03,-59.82 -8.28,-18.57 -11.71,-39.05 -8.62,-59.15 2.94,-19.12 10.46,-34.59 19.54,-45.15 10.74,-12.48 24.75,-21.72 40.26,-27.24 12.35,-4.39 32.01,-9.57 48.29,-23.1 28.56,-23.74 60.48,-70.31 38.43,-139.24 7.72,5.5 54.21,53.84 59.13,113.48 4.92,59.63 -28.8,109.07 -55.89,127.45 -5.12,3.6 -23.33,16.42 -55.75,24.14 -11,2.7 -23.74,6.18 -29.14,12.74 0,-6.18 -1.74,-26.83 25.67,-34.54 27.4,-7.72 94.95,-35.7 100.93,-118.11 2.12,-19.78 -1.16,-54.42 -14.47,-77.19 3.28,12.74 11.58,86.63 -72.95,124.08 -22,8.89 -72.76,24.72 -69.09,89.56 5.02,42.46 56.35,88.1 126.99,53.94 70.63,-34.16 107.69,-123.8 97.65,-189.8C389.07,134.18 340.44,-6.7 171.38,0.25c18.53,5.4 81.83,25.86 85.69,97.65 0.77,47.09 -17.37,71.98 -53.65,86.07 -22.77,9.26 -81.83,22.77 -98.81,94.95 -3.86,33.97 -2.32,47.86 3.47,69.09 -4.25,-5.79 -56.74,-45.87 -58.28,-141.81 0,-86.3 57.61,-143.71 78.02,-159.58Z"
+        android:strokeWidth="0">
+      <aapt:attr name="android:fillColor">
+        <gradient
+            android:centerX="197.85"
+            android:centerY="206.2"
+            android:gradientRadius="202.07"
+            android:type="radial">
+          <item android:offset="0.44" android:color="#FFBDBDBD"/>
+          <item android:offset="1" android:color="#FFFFFFFF"/>
+        </gradient>
+      </aapt:attr>
+    </path>
+    <path
+        android:pathData="m203.12,20.14s-61.84,45.94 -94.21,105.21c68.7,-18.33 122.77,6.72 122.77,6.72 0,0 -11.39,21.97 -35.67,31.46 -13.43,5.25 -42.16,17.5 -58.54,29.3 -17.28,12.45 -31.24,28.72 -41.03,47.37 -9.08,17.31 -11.86,42.68 -8.53,61.94 0.67,3.85 1.6,7.66 2.88,11.11 -61.52,-93.51 39.52,-167.32 101.61,-172.1 0,0 -82.27,-1.45 -118.72,14.76 1.86,-9.93 8.28,-33.56 23.48,-56.16 0,0 23.35,-51.62 105.95,-79.61Z"
+        android:strokeWidth="0"
+        android:fillColor="#ffffff"/>
+  </group>
+</vector>

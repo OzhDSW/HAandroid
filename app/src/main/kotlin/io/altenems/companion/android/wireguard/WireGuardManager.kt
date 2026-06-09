@@ -18,7 +18,7 @@ class WireGuardManager(private val context: Context) {
 
     private val backend = GoBackend(context)
     private var activeTunnel: Tunnel? = null
-
+    var tunnelState: Tunnel.State = Tunnel.State.DOWN
     // A minimal Tunnel implementation
     private inner class SimpleTunnel(private val name: String) : Tunnel {
         override fun getName() = name

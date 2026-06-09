@@ -1,5 +1,6 @@
 package io.altenems.companion.android.onboarding.connection
 
+import android.app.Activity
 import android.net.Uri
 import androidx.annotation.VisibleForTesting
 import androidx.core.net.toUri
@@ -20,7 +21,9 @@ import io.altenems.companion.android.onboarding.connection.navigation.Connection
 import io.altenems.companion.android.util.HAWebChromeClient
 import io.altenems.companion.android.util.HAWebViewClient
 import io.altenems.companion.android.util.HAWebViewClientFactory
+import io.altenems.companion.android.wireguard.WireGuardManager
 import javax.inject.Inject
+import kotlin.text.substringBeforeLast
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -176,7 +179,6 @@ internal class ConnectionViewModel @VisibleForTesting constructor(
             )
         }
     }
-
     private fun interceptRedirectIfRequired(url: Uri, isTLSClientAuthNeeded: Boolean): Boolean {
         return if (url.isOpaque) {
             false // Not intercepted: opaque is not handled by app

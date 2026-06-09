@@ -20,7 +20,7 @@ import io.altenems.companion.android.common.compose.composable.HALoading
 import io.altenems.companion.android.common.compose.theme.HAThemeForPreview
 import io.altenems.companion.android.util.compose.HAPreviews
 
-private val ICON_SIZE = 64.dp
+private val ICON_SIZE = 240.dp
 
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
@@ -29,7 +29,7 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize(),
     ) {
         Image(
-            imageVector = ImageVector.vectorResource(R.drawable.ic_alten_branding),
+            imageVector = ImageVector.vectorResource(R.drawable.ic_launcher_foreground),
             contentDescription = null,
             modifier = Modifier.size(ICON_SIZE),
         )

@@ -11,6 +11,7 @@ import io.altenems.companion.android.common.data.network.NetworkState
 import io.altenems.companion.android.common.data.network.NetworkStatusMonitor
 import io.altenems.companion.android.common.data.prefs.PrefsRepository
 import io.altenems.companion.android.common.data.servers.ServerManager
+import io.altenems.companion.android.common.data.wireguard.WireGuardRepository
 import io.altenems.companion.android.database.server.Server
 import io.altenems.companion.android.database.server.ServerConnectionInfo
 import io.altenems.companion.android.database.server.ServerSessionInfo
@@ -51,6 +52,7 @@ class LaunchViewModelTest {
 
     private val workManager: WorkManager = mockk()
     private val appLockStateManager: AppLockStateManager = mockk(relaxed = true)
+    private val wireGuardRepository: WireGuardRepository = mockk(relaxed = true)
 
     private lateinit var viewModel: LaunchViewModel
 
@@ -67,6 +69,7 @@ class LaunchViewModelTest {
             networkStatusMonitor,
             prefsRepository,
             appLockStateManager,
+            wireGuardRepository,
             hasLocationTrackingSupport,
             isAutomotive,
             isFullFlavor,

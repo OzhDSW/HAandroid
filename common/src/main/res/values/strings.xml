@@ -1486,4 +1486,6 @@
     <string name="wireguard_validating">Validating…</string>
     <string name="wireguard_saved_config">Saved config: %1$s</string>
     <string name="wireguard_connect_vpn">Connect VPN</string>
+    <string name="wireguard_disconnect_vpn">Disconnect VPN</string>
+
 </resources>

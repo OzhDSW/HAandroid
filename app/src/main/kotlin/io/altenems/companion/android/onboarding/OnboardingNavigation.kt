@@ -12,16 +12,6 @@ import io.altenems.companion.android.launch.HAStartDestinationRoute
 import io.altenems.companion.android.onboarding.connection.navigation.ConnectionRoute
 import io.altenems.companion.android.onboarding.connection.navigation.connectionScreen
 import io.altenems.companion.android.onboarding.connection.navigation.navigateToConnection
-import io.altenems.companion.android.onboarding.localfirst.navigation.LocalFirstRoute
-import io.altenems.companion.android.onboarding.localfirst.navigation.localFirstScreen
-import io.altenems.companion.android.onboarding.localfirst.navigation.navigateToLocalFirst
-import io.altenems.companion.android.onboarding.locationforsecureconnection.navigation.LocationForSecureConnectionRoute
-import io.altenems.companion.android.onboarding.locationforsecureconnection.navigation.URL_SECURITY_LEVEL_DOCUMENTATION
-import io.altenems.companion.android.onboarding.locationforsecureconnection.navigation.locationForSecureConnectionScreen
-import io.altenems.companion.android.onboarding.locationforsecureconnection.navigation.navigateToLocationForSecureConnection
-import io.altenems.companion.android.onboarding.locationsharing.navigation.LocationSharingRoute
-import io.altenems.companion.android.onboarding.locationsharing.navigation.locationSharingScreen
-import io.altenems.companion.android.onboarding.locationsharing.navigation.navigateToLocationSharing
 import io.altenems.companion.android.onboarding.manualserver.navigation.ManualServerRoute
 import io.altenems.companion.android.onboarding.manualserver.navigation.manualServerScreen
 import io.altenems.companion.android.onboarding.manualserver.navigation.navigateToManualServer
@@ -33,8 +23,6 @@ import io.altenems.companion.android.onboarding.serverdiscovery.navigation.Serve
 import io.altenems.companion.android.onboarding.serverdiscovery.navigation.ServerDiscoveryRoute
 import io.altenems.companion.android.onboarding.serverdiscovery.navigation.navigateToServerDiscovery
 import io.altenems.companion.android.onboarding.serverdiscovery.navigation.serverDiscoveryScreen
-import io.altenems.companion.android.onboarding.sethomenetwork.navigation.navigateToSetHomeNetworkRoute
-import io.altenems.companion.android.onboarding.sethomenetwork.navigation.setHomeNetworkScreen
 import io.altenems.companion.android.onboarding.wearmtls.navigation.URL_MTLS_DOCUMENTATION
 import io.altenems.companion.android.onboarding.wearmtls.navigation.navigateToWearMTLS
 import io.altenems.companion.android.onboarding.wearmtls.navigation.wearMTLSScreen
@@ -45,8 +33,8 @@ import io.altenems.companion.android.util.compose.navigateToUri
 import kotlinx.serialization.Serializable
 
 @VisibleForTesting
-const val URL_GETTING_STARTED_DOCUMENTATION =
-    "https://companion.home-assistant.io/docs/getting_started/"
+const val URL_MORE_INFO_SITE =
+    "https://gs-trading.com.ua/"
 
 /**
  * Navigation route for the main onboarding flow.
@@ -133,7 +121,7 @@ internal fun NavGraphBuilder.onboarding(
                 }
             },
             onLearnMoreClick = {
-                navController.navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, onShowSnackbar)
+                navController.navigateToUri(URL_MORE_INFO_SITE, onShowSnackbar)
             },
         )
         commonScreens(navController = navController, onShowSnackbar = onShowSnackbar)
@@ -158,7 +146,7 @@ internal fun NavGraphBuilder.onboarding(
             },
             onShowSnackbar = onShowSnackbar,
             onHelpClick = {
-                navController.navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, onShowSnackbar)
+                navController.navigateToUri(URL_MORE_INFO_SITE, onShowSnackbar)
             },
         )
         /*localFirstScreen(
@@ -437,7 +425,7 @@ internal fun NavGraphBuilder.wearOnboarding(
                 }
             },
             onHelpClick = {
-                navController.navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, onShowSnackbar)
+                navController.navigateToUri(URL_MORE_INFO_SITE, onShowSnackbar)
             },
         )
         wearMTLSScreen(

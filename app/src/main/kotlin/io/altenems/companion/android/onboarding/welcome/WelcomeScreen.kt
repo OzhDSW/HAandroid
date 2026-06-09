@@ -43,6 +43,7 @@ import io.altenems.companion.android.common.compose.theme.HAThemeForPreview
 import io.altenems.companion.android.common.compose.theme.MaxButtonWidth
 import io.altenems.companion.android.common.data.wireguard.WireGuardConfig
 import io.altenems.companion.android.util.compose.HAPreviews
+import io.altenems.companion.android.wireguard.WireGuardManager
 import kotlinx.coroutines.launch
 
 private val ICON_SIZE = 120.dp
@@ -59,10 +60,12 @@ internal fun WelcomeScreen(
     val validationStatus by viewModel.validationStatus.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val activity = LocalActivity.current
+    val vpnState by viewModel.isVpnConnected.collectAsStateWithLifecycle()
 
     WelcomeScreenContent(
         wireGuardConfig = wireGuardConfig,
         validationStatus = validationStatus,
+        isVpnConnected =  vpnState,
         onConnectClick = onConnectClick,
         onLearnMoreClick = onLearnMoreClick,
         onFilePicked = { uri -> viewModel.onFilePicked(context, uri) },
@@ -73,8 +76,9 @@ internal fun WelcomeScreen(
 
 @Composable
 private fun WelcomeScreenContent(
-    wireGuardConfig: io.altenems.companion.android.common.data.wireguard.WireGuardConfig,
+    wireGuardConfig: WireGuardConfig,
     validationStatus: WelcomeViewModel.ValidationStatus,
+    isVpnConnected: Boolean,
     onConnectClick: () -> Unit,
     onLearnMoreClick: suspend () -> Unit,
     onFilePicked: (Uri) -> Unit,
@@ -101,7 +105,7 @@ private fun WelcomeScreenContent(
         Spacer(modifier = Modifier.weight(positionPercentage))
 
         Image(
-            imageVector = ImageVector.vectorResource(R.drawable.ic_alten_branding),
+            imageVector = ImageVector.vectorResource(R.drawable.ic_launcher_foreground),
             contentDescription = stringResource(commonR.string.branding_icon_content_description),
             modifier = Modifier.size(ICON_SIZE),
         )
@@ -114,6 +118,7 @@ private fun WelcomeScreenContent(
             validationStatus = validationStatus,
             onPickFileClick = { filePickerLauncher.launch("*/*") },
             onConnectVpnClick = onConnectVpnClick,
+            isVpnConnected = isVpnConnected,
         )
 
         BottomButtons(onConnectClick = onConnectClick, onLearnMoreClick = onLearnMoreClick)
@@ -126,6 +131,7 @@ private fun WireGuardSection(
     validationStatus: WelcomeViewModel.ValidationStatus,
     onPickFileClick: () -> Unit,
     onConnectVpnClick: () -> Unit,
+    isVpnConnected: Boolean
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -148,6 +154,7 @@ private fun WireGuardSection(
                     style = HATextStyle.BodyMedium,
                     color = MaterialTheme.colorScheme.primary,
                 )
+                onConnectVpnClick()
             }
             is WelcomeViewModel.ValidationStatus.Invalid -> {
                 Text(
@@ -172,13 +179,15 @@ private fun WireGuardSection(
             }
         }
 
-        if (config.configText != null) {
-            HAAccentButton(
-                text = stringResource(commonR.string.wireguard_connect_vpn),
-                onClick = onConnectVpnClick,
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
+//        if (config.configText != null) {
+//            HAAccentButton(
+//                text = stringResource(
+//                    if (!isVpnConnected) commonR.string.wireguard_connect_vpn
+//                    else commonR.string.wireguard_disconnect_vpn),
+//                onClick = onConnectVpnClick,
+//                modifier = Modifier.fillMaxWidth(),
+//            )
+//        }
     }
 }
 
@@ -233,6 +242,7 @@ private fun WelcomeScreenPreview() {
         WelcomeScreenContent(
             wireGuardConfig = WireGuardConfig(),
             validationStatus = WelcomeViewModel.ValidationStatus.Idle,
+            isVpnConnected = false,
             onConnectClick = {},
             onLearnMoreClick = {},
             onFilePicked = {},

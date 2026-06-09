@@ -5,12 +5,16 @@ import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
+import com.wireguard.android.backend.Tunnel
 import com.wireguard.config.Config
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.altenems.companion.android.common.data.wireguard.WireGuardConfig
 import io.altenems.companion.android.common.data.wireguard.WireGuardRepository
+import io.altenems.companion.android.util.getActivity
 import io.altenems.companion.android.wireguard.WireGuardManager
+import io.altenems.companion.android.wireguard.WireGuardVpnService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -31,12 +35,15 @@ class WelcomeViewModel @Inject constructor(
 
     private val _validationStatus = MutableStateFlow<ValidationStatus>(ValidationStatus.Idle)
     val validationStatus: StateFlow<ValidationStatus> = _validationStatus.asStateFlow()
+    private val _vpnState = MutableStateFlow(wireGuardManager.isConnected())
+    val isVpnConnected: StateFlow<Boolean> = _vpnState.asStateFlow()
 
     sealed interface ValidationStatus {
         object Idle : ValidationStatus
         object Validating : ValidationStatus
         data class Valid(val fileName: String) : ValidationStatus
         data class Invalid(val error: String) : ValidationStatus
+
     }
 
     fun onFilePicked(context: Context, uri: Uri) {
@@ -94,9 +101,16 @@ class WelcomeViewModel @Inject constructor(
         val config = wireGuardConfig.value
         val fileName = config.fileName
         val configText = config.configText
+//        if (wireGuardManager.isConnected()) {
+//            wireGuardManager.disconnect()
+//            _vpnState.value = false;
+//            return
+//        }
+
         if (fileName != null && configText != null) {
             if (wireGuardManager.prepareVpn(activity, 100)) {
                 wireGuardManager.connect(fileName.substringBeforeLast("."), configText)
+                _vpnState.value = wireGuardManager.isConnected();
             }
         }
     }

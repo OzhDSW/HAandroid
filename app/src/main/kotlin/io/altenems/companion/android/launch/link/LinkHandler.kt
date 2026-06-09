@@ -2,6 +2,7 @@ package io.altenems.companion.android.launch.link
 
 import android.net.Uri
 import androidx.core.net.toUri
+import io.altenems.companion.android.common.R
 import io.altenems.companion.android.common.data.servers.ServerManager
 import io.altenems.companion.android.common.util.FailFast
 import javax.inject.Inject

@@ -23,7 +23,7 @@ import io.altenems.companion.android.common.R as commonR
 import io.altenems.companion.android.common.data.altenemsVersion
 import io.altenems.companion.android.common.data.connectivity.ConnectivityCheckState
 import io.altenems.companion.android.onboarding.BaseOnboardingNavigationTest
-import io.altenems.companion.android.onboarding.URL_GETTING_STARTED_DOCUMENTATION
+import io.altenems.companion.android.onboarding.URL_MORE_INFO_SITE
 import io.altenems.companion.android.onboarding.connection.CONNECTION_SCREEN_TAG
 import io.altenems.companion.android.onboarding.connection.ConnectionNavigationEvent
 import io.altenems.companion.android.onboarding.connection.ConnectionViewModel
@@ -155,7 +155,7 @@ internal class ServerDiscoveryNavigationTest : BaseOnboardingNavigationTest() {
             assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ServerDiscoveryRoute>() == true)
 
             onNodeWithContentDescription(stringResource(commonR.string.get_help)).performClick()
-            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+            coVerify { any<NavController>().navigateToUri(URL_MORE_INFO_SITE, any()) }
 
             onNodeWithContentDescription(stringResource(commonR.string.navigate_up))
                 .assertIsDisplayed()
@@ -196,7 +196,7 @@ internal class ServerDiscoveryNavigationTest : BaseOnboardingNavigationTest() {
             assertTrue(navController.currentBackStackEntry?.destination?.hasRoute<ManualServerRoute>() == true)
 
             onNodeWithContentDescription(stringResource(commonR.string.get_help)).performClick()
-            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+            coVerify { any<NavController>().navigateToUri(URL_MORE_INFO_SITE, any()) }
 
             onNodeWithContentDescription(stringResource(commonR.string.navigate_up))
                 .assertIsDisplayed()
@@ -221,7 +221,7 @@ internal class ServerDiscoveryNavigationTest : BaseOnboardingNavigationTest() {
             )
 
             onNodeWithContentDescription(stringResource(commonR.string.get_help)).performClick()
-            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+            coVerify { any<NavController>().navigateToUri(URL_MORE_INFO_SITE, any()) }
 
             mainDispatcherRule.testDispatcher.scheduler.advanceTimeBy(DELAY_BEFORE_DISPLAY_DISCOVERY.inWholeMilliseconds)
             mainDispatcherRule.testDispatcher.scheduler.runCurrent()

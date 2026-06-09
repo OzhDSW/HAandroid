@@ -19,6 +19,7 @@ import io.altenems.companion.android.frontend.filechooser.FileChooserManager
 import io.altenems.companion.android.testing.unit.MainDispatcherJUnit5Extension
 import io.altenems.companion.android.util.HAWebViewClient
 import io.altenems.companion.android.util.HAWebViewClientFactory
+import io.altenems.companion.android.wireguard.WireGuardManager
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
@@ -63,6 +64,7 @@ class ConnectionViewModelTest {
                 onCrash = any(),
                 onUrlIntercepted = any(),
                 onPageFinished = any(),
+                onReceivedHttpAuthRequest = any(),
             )
         } answers {
             HAWebViewClient(
@@ -78,6 +80,7 @@ class ConnectionViewModelTest {
     }
     private val connectivityCheckRepository: ConnectivityCheckRepository = mockk()
     private val fileChooserManager = FileChooserManager()
+    private val wireGuardManager: WireGuardManager = mockk(relaxed = true)
 
     @BeforeEach
     fun setup() {

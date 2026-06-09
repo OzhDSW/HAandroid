@@ -10,7 +10,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
 import io.altenems.companion.android.common.R as commonR
 import io.altenems.companion.android.onboarding.BaseOnboardingNavigationTest
-import io.altenems.companion.android.onboarding.URL_GETTING_STARTED_DOCUMENTATION
+import io.altenems.companion.android.onboarding.URL_MORE_INFO_SITE
 import io.altenems.companion.android.testing.unit.stringResource
 import io.altenems.companion.android.util.compose.navigateToUri
 import io.mockk.coVerify
@@ -36,7 +36,7 @@ internal class WelcomeNavigationTest : BaseOnboardingNavigationTest() {
                 .performScrollTo()
                 .assertIsDisplayed()
                 .performClick()
-            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+            coVerify { any<NavController>().navigateToUri(URL_MORE_INFO_SITE, any()) }
         }
     }
 }

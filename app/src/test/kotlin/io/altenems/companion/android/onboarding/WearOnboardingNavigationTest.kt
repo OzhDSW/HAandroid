@@ -276,7 +276,7 @@ internal class WearOnboardingNavigationTest {
             onNodeWithText(WEAR_NAME).assertIsDisplayed()
 
             onNodeWithContentDescription(stringResource(commonR.string.get_help)).performClick()
-            coVerify { any<NavController>().navigateToUri(URL_GETTING_STARTED_DOCUMENTATION, any()) }
+            coVerify { any<NavController>().navigateToUri(URL_MORE_INFO_SITE, any()) }
 
             onNodeWithText(stringResource(commonR.string.name_your_device_save)).performScrollTo().assertIsDisplayed().performClick()
 
